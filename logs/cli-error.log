@@ -1,0 +1,25 @@
+2019-03-07 03:37:08 Error: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES) in /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Driver.php on line 93
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Driver.php(93): PDO->__construct('mysql:host=loca...', 'my_app', 'secret', Array)
+#1 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Database/Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1092): Cake\Database\Connection->getSchemaCollection()
+#8 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(1046): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(213): Bake\Shell\Task\ModelTask->listAll()
+#10 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#11 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'orgs', 'Orgs')
+#12 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('Orgs')
+#13 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/BakeShell.php(279): Bake\Shell\Task\ModelTask->main('Orgs')
+#14 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Collection/CollectionTrait.php(51): Bake\Shell\BakeShell->Bake\Shell\{closure}('orgs', 0)
+#15 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/bake/src/Shell/BakeShell.php(280): Cake\Collection\Collection->each(Object(Closure))
+#16 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Console/Shell.php(518): Bake\Shell\BakeShell->all('orgs')
+#17 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Console/CommandRunner.php(371): Cake\Console\Shell->runCommand(Array, true)
+#18 /Applications/MAMP/htdocs/Git/onlinepos/vendor/cakephp/cakephp/src/Console/CommandRunner.php(166): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#19 /Applications/MAMP/htdocs/Git/onlinepos/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#20 {main}
+
+
