@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -9,35 +10,34 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\Login[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class LoginController extends AppController
-{
+class LoginController extends AppController {
 
     /**
      * Index method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
-    {
+    public function index() {
         $this->viewBuilder()->setLayout('loginLayout');
 
-        if($this->request->is('post')){
-            if($this->request->getSession('Auth.User') != null){
-                $this->Flash->warning(__('Login Already...'));
-                return $this->redirect(['controller'=>'Users', 'action'=>'index']);
-            }else{
-                $user = $this->Auth->identify();
-                if($user){
-                    $this->Auth->setUser($user);
-                    $this->Flash->success(__('Login Success...'));
-                    return $this->redirect(['controller'=>'Users', 'action'=>'index']);
-                }
 
-                $this->Flash->error(__('Sorry, Failed...'));
+
+
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                $this->Flash->success(__('Login Success...'));
+                return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+            }
+
+            $this->Flash->error(__('Sorry, Failed...'));
+        } else {
+            if ($this->Auth->user()) {
+                return $this->redirect(['controller' => 'users', 'action' => 'index']);
             }
         }
     }
-
 
     /**
      * View method
@@ -46,9 +46,7 @@ class LoginController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-
-    public function view($id = null)
-    {
+    public function view($id = null) {
         $login = $this->Login->get($id, [
             'contain' => []
         ]);
@@ -61,8 +59,7 @@ class LoginController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
+    public function add() {
         $login = $this->Login->newEntity();
         if ($this->request->is('post')) {
             $login = $this->Login->patchEntity($login, $this->request->getData());
@@ -83,8 +80,7 @@ class LoginController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
-    {
+    public function edit($id = null) {
         $login = $this->Login->get($id, [
             'contain' => []
         ]);
@@ -107,8 +103,7 @@ class LoginController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $login = $this->Login->get($id);
         if ($this->Login->delete($login)) {
@@ -119,4 +114,5 @@ class LoginController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }

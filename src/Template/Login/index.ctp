@@ -4,7 +4,7 @@
                 <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>Minton</span> </a>
             </div>
 
-            <?= $this->Form->create(); ?>
+            <?= $this->Form->create() ?>
             <fieldset>
                 <div class="form-group row">
                     <div class="col-12">
