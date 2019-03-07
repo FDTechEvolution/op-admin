@@ -37,6 +37,16 @@ class OrgsCompComponent extends Component {
             return false;
         }
     }
+
+    public function orgList(){
+        $this->Orgs = TableRegistry::get('Orgs');
+
+        $query = $this->Orgs->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name'
+        ]);
+        return $data = $query->toArray();
+    }
     
     public function update(){
         

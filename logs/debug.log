@@ -1,0 +1,56 @@
+2019-03-07 18:50:01 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:01 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:01 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:02 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:02 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:02 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+
+2019-03-07 18:50:03 Debug: Cake\Http\Session Object
+(
+    [_engine:protected] => 
+    [_started:protected] => 1
+    [_lifetime:protected] => 1440
+    [_isCLI:protected] => 
+)
+

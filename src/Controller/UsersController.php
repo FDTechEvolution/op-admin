@@ -52,16 +52,16 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEntity();
+        $this->loadComponent('UsersComp');
+        $this->loadComponent('OrgsComp');
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $dataPost = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            if($this->UsersComp->create($user, $dataPost)){
+                return $this->redirect(['action'=>'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $orgs = $this->Users->Orgs->find('list', ['limit' => 200]);
+        $orgs = $this->OrgsComp->orgList();
         $this->set(compact('user', 'orgs'));
     }
 
