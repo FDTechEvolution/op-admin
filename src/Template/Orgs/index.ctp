@@ -18,7 +18,7 @@
                 <th scope="col"><?= $this->Paginator->sort('code') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('createdby') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modifiedby') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('isactive') ?></th>
+                <th scope="col"><?= __('isactive') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -38,7 +38,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $org->id], ['class'=>'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape'=>false]) ?>
                     <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $org->id], ['class'=>'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape'=>false]) ?>
-                    <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('Are you sure you want to delete # {0}?', $org->id), 'class'=>'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape'=>false]) ?>
+                    <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('ยือนยันการลบ {0} ?', $org->name), 'class'=>'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape'=>false]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
