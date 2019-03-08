@@ -10,7 +10,7 @@
                     <div class="col-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="mdi mdi-account"></i></span>
-                            <input class="form-control" type="email" name="email" required="" placeholder="Email">
+                            <input class="form-control" type="number" name="mobile" required="" placeholder="หมายเลขโทรศัพท์">
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="mdi mdi-radar"></i></span>
-                            <input class="form-control" type="password" name="password" required="" placeholder="Password">
+                            <input class="form-control" type="password" name="password" required="" placeholder="รหัสผ่าน">
                         </div>
                     </div>
                 </div>

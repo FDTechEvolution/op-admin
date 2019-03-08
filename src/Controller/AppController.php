@@ -54,7 +54,7 @@ class AppController extends Controller
             'authError' => 'Did you really think you are allowed to see that?',
             'authenticate' => [
                 'Form' => [
-                    'fields' => ['username' => 'email', 'password'=>'password']
+                    'fields' => ['username' => 'mobile', 'password'=>'password']
                 ]
             ],
             'storage' => 'Session'
