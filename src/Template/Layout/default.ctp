@@ -14,7 +14,9 @@
         <?= $this->Html->css('icons.css') ?>
         <?= $this->Html->css('style.css') ?>
 
+         <?= $this->Html->script('jquery.min.js') ?>
         <?= $this->Html->script('modernizr.min.js') ?>
+        
 
     </head>
 
@@ -172,7 +174,7 @@
         </script>
 
         <!-- Plugins  -->
-        <?= $this->Html->script('jquery.min.js') ?>
+       
         <?= $this->Html->script('popper.min.js') ?>
         <?= $this->Html->script('bootstrap.min.js') ?>
         <?= $this->Html->script('detect.js') ?>
