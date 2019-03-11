@@ -1,9 +1,7 @@
-
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Organization</h4>
-            
+            <h4 class="page-title">Organization</h4> 
             <div class="clearfix"></div>
         </div>
     </div>
@@ -21,12 +19,12 @@
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('code') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('createdby') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('modifiedby') ?></th>
-                        <th scope="col"><?= __('isactive') ?></th>
-                        <th scope="col" class="actions"><?= __('Actions') ?></th>
+                        <th scope="col" width="20%"><?= $this->Paginator->sort('name') ?></th>
+                        <th scope="col" width="20%"><?= $this->Paginator->sort('code') ?></th>
+                        <th scope="col" width="12%" class="text-center"><?= $this->Paginator->sort('createdby') ?></th>
+                        <th scope="col" width="12%" class="text-center"><?= $this->Paginator->sort('modifiedby') ?></th>
+                        <th scope="col" width="10%" class="text-center"><?= __('isactive') ?></th>
+                        <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,16 +34,16 @@
                             <td><?= h($org->code) ?></td>
                             <td><?= h($org->createdby) ?></td>
                             <td><?= h($org->modifiedby) ?></td>
-                            <td><?php if (h($org->isactive == 'Y')) { ?>
+                            <td class="text-center"><?php if (h($org->isactive == 'Y')) { ?>
                                     <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
                                 <?php } else { ?>
                                     <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
                                 <?php } ?>
                             </td>
-                            <td class="actions">
+                            <td class="actions text-center">
                                 <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $org->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                                 <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $org->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
-                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('ยือนยันการลบ {0} ?', $org->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('ยืนยันการลบ {0} ?', $org->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
