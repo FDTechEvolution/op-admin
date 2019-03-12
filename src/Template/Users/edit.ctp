@@ -4,36 +4,87 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Orgs'), ['controller' => 'Orgs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Org'), ['controller' => 'Orgs', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->control('org_id', ['options' => $orgs]);
-            echo $this->Form->control('name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('mobile');
-            echo $this->Form->control('password');
-            echo $this->Form->control('isactive');
-            echo $this->Form->control('createdby');
-            echo $this->Form->control('modifiedby');
-            echo $this->Form->control('description');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Edit User</h4>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                     <?= $this->Html->link(__('< List User'), ['action' => 'index'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5']) ?>
+                </div>
+                <div class="col-md-12">
+                    <div class="p-20">
+                        <?= $this->Form->create($user, ['class'=>'form-horizontal', 'role'=>'form']) ?>
+                        <fieldset>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Org</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Name</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('name', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Email</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('email', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Mobile</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('mobile', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">สถานะ</label>
+                                <div class="col-8">
+                                    <?php if (h($user->isactive == 'Y')) { ?>
+                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
+                                    <?php } else { ?>
+                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Createdby</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('createdby', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Modifiedby</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->control('modifiedby', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label">Description</label>
+                                <div class="col-8">
+                                    <?php echo $this->Form->textarea('description', ['class'=>'form-control', 'label'=>false]); ?>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group row">
+                            <div class="col-12 text-center">
+                                <?= $this->Form->button(__('<i class=" mdi mdi-auto-upload"></i> UPDATE'), ['class'=>'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape'=>false]) ?>
+                            </div>
+                        </div>
+                        <?= $this->Form->end() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -19,10 +19,10 @@
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" width="20%"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col" width="20%"><?= $this->Paginator->sort('code') ?></th>
-                        <th scope="col" width="12%" class="text-center"><?= $this->Paginator->sort('createdby') ?></th>
-                        <th scope="col" width="12%" class="text-center"><?= $this->Paginator->sort('modifiedby') ?></th>
+                        <th scope="col" width="18%"><?= $this->Paginator->sort('name') ?></th>
+                        <th scope="col" width="18%"><?= $this->Paginator->sort('code') ?></th>
+                        <th scope="col" width="10%" class="text-center"><?= $this->Paginator->sort('createdby') ?></th>
+                        <th scope="col" width="10%" class="text-center"><?= $this->Paginator->sort('modifiedby') ?></th>
                         <th scope="col" width="10%" class="text-center"><?= __('isactive') ?></th>
                         <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
                     </tr>

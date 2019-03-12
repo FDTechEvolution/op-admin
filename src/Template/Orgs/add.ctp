@@ -39,7 +39,7 @@
                                 <div class="form-group row">
                                     <label class="col-2 col-form-label">สถานะ</label>
                                     <div class="col-8">
-                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
+                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
