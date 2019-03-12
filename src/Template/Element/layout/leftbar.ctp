@@ -8,7 +8,10 @@
                     <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller'=>'home'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
                 <li>
-                    <?= $this->Html->link('<i class="ti-home"></i><span> Organization </span>', ['controller'=>'orgs'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                    <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller'=>'users'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Organization </span>', ['controller'=>'orgs'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
 
                 <li class="has_sub">

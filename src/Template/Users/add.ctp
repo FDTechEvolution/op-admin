@@ -62,10 +62,10 @@
                                 <div class="form-group row">
                                     <label class="col-2 col-form-label">createdby</label>
                                     <div class="col-8">
-                                        <?php echo $this->Form->control('createdby', ['class'=>'form-control', 'label'=>false, 'value'=>'00000', 'disabled']); ?>
+                                        <?php echo $this->Form->control('createdby', ['class'=>'form-control', 'label'=>false, 'disabled']); ?>
                                     </div>
                                 </div>
-                                <?php echo $this->Form->control('modifiedby', ['class'=>'form-control', 'label'=>false, 'value'=>'00000', 'type'=>'hidden']); ?>
+                                <?php echo $this->Form->control('modifiedby', ['class'=>'form-control', 'label'=>false, 'type'=>'hidden']); ?>
                                 <div class="form-group row">
                                     <label class="col-2 col-form-label">description</label>
                                     <div class="col-8">

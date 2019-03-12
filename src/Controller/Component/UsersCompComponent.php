@@ -21,7 +21,7 @@ class UsersCompComponent extends Component
 
     public function create($user, $data){
         $this->Users = TableRegistry::get('Users'); // ชี้เป้าไปที่ DB table Users
-
+        //$this->log($data,'debug');
         $user = $this->Users->patchEntity($user, $data); // ทำการแมทช์แต่ละฟิลด์กับข้อมูลที่รับเข้ามา
 
         if($this->Users->save($user)){ // ทำการบันทึก

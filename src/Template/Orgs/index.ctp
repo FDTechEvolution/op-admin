@@ -35,9 +35,9 @@
                             <td><?= h($org->createdby) ?></td>
                             <td><?= h($org->modifiedby) ?></td>
                             <td class="text-center"><?php if (h($org->isactive == 'Y')) { ?>
-                                    <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
+                                    <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked', 'id'=>'chkedbox', 'onchange'=>__('chkfunc()')]) ?>
                                 <?php } else { ?>
-                                    <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
+                                    <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'id'=>'chkbox', 'onchange'=>__('unchkfunc()')]) ?>
                                 <?php } ?>
                             </td>
                             <td class="actions text-center">
@@ -70,6 +70,10 @@
 <!-- Responsive examples -->
 <?= $this->html->script('dataTables.responsive.min') ?>
 <?= $this->html->script('responsive.bootstrap4.min') ?>
+
+<!-- Custom JS 
+<?= $this->html->script('mycustomjs') ?>
+-->
 
 
 <script type="text/javascript">

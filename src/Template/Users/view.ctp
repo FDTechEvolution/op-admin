@@ -50,6 +50,8 @@
 
                         <p class="text-muted font-13"><strong>Created By :</strong> <span class="m-l-15"><?= h($user->createdby) ?></span></p>
 
+                        <p class="text-muted font-13"><strong>Modified By :</strong> <span class="m-l-15"><?= h($user->modifiedby) ?></span></p>
+
                         <p class="text-muted font-13"><strong>Description :</strong> <span class="m-l-15"><?= h($user->description) ?></span></p>
                     </div>
 
@@ -75,10 +77,10 @@
                             <div class="col-4">
                                 <div class="widget-bg-color-icon card-box fadeInDown animated">
                                     <div class="bg-icon bg-icon-primary pull-left">
-                                        <i class=" ti-money text-info"></i>
+                                        <i class="ion-social-bitcoin text-info"></i>
                                     </div>
                                     <div class="text-right">
-                                        <h3 class="text-dark m-t-10"><b class="counter">31,570</b></h3>
+                                        <h3 class="text-dark m-t-10"><b class="counter">31,570</b> ฿</h3>
                                         <p class="text-muted mb-0">Total Revenue</p>
                                     </div>
                                     <div class="clearfix"></div>

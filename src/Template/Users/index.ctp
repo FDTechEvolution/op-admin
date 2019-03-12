@@ -29,8 +29,8 @@
                         <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('mobile') ?></th>
                         <th scope="col"><?= __('isactive') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('createdby') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('modifiedby') ?></th>
+                        <th scope="col"><?= __('createdby') ?></th>
+                        <th scope="col"><?= __('modifiedby') ?></th>
                         <th scope="col"><?= __('description') ?></th>
                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                     </tr>
@@ -43,9 +43,9 @@
                         <td><?= h($user->email) ?></td>
                         <td><?= h($user->mobile) ?></td>
                         <td class="text-center"><?php if (h($user->isactive == 'Y')) { ?>
-                                <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
+                                <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked', 'id'=>'chkedbox', 'onchange'=>__('chkfunc()')]) ?>
                             <?php } else { ?>
-                                <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
+                                <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'id'=>'chkbox', 'onchange'=>__('unchkfunc()')]) ?>
                             <?php } ?>
                         </td>
                         <td><?= h($user->createdby) ?></td>
@@ -82,6 +82,10 @@
 <?= $this->html->script('dataTables.responsive.min') ?>
 <?= $this->html->script('responsive.bootstrap4.min') ?>
 
+<!-- Custom JS
+<?= $this->html->script('mycustomjs') ?>
+-->
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -96,5 +100,4 @@
         table.buttons().container()
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
     });
-
 </script>
