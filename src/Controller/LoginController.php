@@ -20,21 +20,18 @@ class LoginController extends AppController {
     public function index() {
         $this->viewBuilder()->setLayout('loginLayout');
 
-
-
-
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
                 $this->Flash->success(__('Login Success...'));
-                return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Dashboard']);
             }
 
             $this->Flash->error(__('Sorry, Failed...'));
         } else {
             if ($this->Auth->user()) {
-                return $this->redirect(['controller' => 'users', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Dashboard']);
             }
         }
     }

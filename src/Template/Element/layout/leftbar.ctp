@@ -5,7 +5,7 @@
             <ul>
                 <li class="menu-title">Main</li>
                 <li>
-                    <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller'=>'home'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                    <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller'=>'dashboard'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
                 <li>
                     <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller'=>'users'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
@@ -22,8 +22,9 @@
                     </ul>
                 </li>
 
-
-
+                <li>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Log out </span>', ['controller'=>'logout'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                </li>
             </ul>
 
             <div class="clearfix"></div>

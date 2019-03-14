@@ -32,7 +32,7 @@ class PagesController extends AppController {
 
 
     
-    public function home(){
+    public function index(){
         
     }
 
