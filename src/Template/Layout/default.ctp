@@ -14,8 +14,9 @@
         <?= $this->Html->css('icons.css') ?>
         <?= $this->Html->css('style.css') ?>
 
-         <?= $this->Html->script('jquery.min.js') ?>
+        <?= $this->Html->script('jquery.min.js') ?>
         <?= $this->Html->script('modernizr.min.js') ?>
+        <?= $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js') ?>
         
 
     </head>
