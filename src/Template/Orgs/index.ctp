@@ -11,20 +11,17 @@
         <div class="card-box">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <?= $this->Form->button(__('ADD NEW'), ['class'=>'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle'=>'modal', 'data-target'=>'#exampleModal']) ?>
-                    <?= $this->Html->link(__('Add New'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'style'=>'display: none;']) ?>
+                    <?= $this->Html->link(__('Add New'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5']) ?>
                 </div>
             </div>
-           
-            
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" width="18%"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col" width="18%"><?= $this->Paginator->sort('code') ?></th>
+                        <th scope="col" width="18%"><?= $this->Paginator->sort('ชื่อกลุ่ม') ?></th>
+                        <th scope="col" width="18%"><?= $this->Paginator->sort('รหัสกลุ่ม') ?></th>
                         <th scope="col" width="10%" class="text-center"><?= $this->Paginator->sort('createdby') ?></th>
                         <th scope="col" width="10%" class="text-center"><?= $this->Paginator->sort('modifiedby') ?></th>
-                        <th scope="col" width="10%" class="text-center"><?= __('isactive') ?></th>
+                        <th scope="col" width="10%" class="text-center"><?= __('สถานะ') ?></th>
                         <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
                     </tr>
                 </thead>
@@ -54,54 +51,6 @@
     </div>
 </div>
 
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New</h5>
-      </div>
-      <div class="modal-body">
-                        <?= $this->Form->create($org, ['class'=>'form-horizontal', 'role'=>'form']) ?>
-                            <fieldset>
-                                <div class="form-group row">
-                                    <label class="col-2 col-form-label">Name</label>
-                                    <div class="col-8">
-                                        <?php echo $this->Form->control('name', ['class'=>'form-control', 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-2 col-form-label">Code</label>
-                                    <div class="col-8">
-                                        <?php echo $this->Form->control('code', ['class'=>'form-control', 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-2 col-form-label">สถานะ</label>
-                                    <div class="col-8">
-                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-2 col-form-label">createdby</label>
-                                    <div class="col-8">
-                                        <?php echo $this->Form->control('createdby', ['class'=>'form-control', 'label'=>false, 'disabled']); ?>
-                                    </div>
-                                </div>
-                                <?php echo $this->Form->control('modifiedby', ['class'=>'form-control', 'label'=>false, 'type'=>'hidden']); ?>
-                            </fieldset>
-                            <div class="form-group row">
-                                <div class="col-12 text-center">
-                                    <?= $this->Form->button(__('<i class="mdi mdi-content-save"></i> SAVE'), ['class'=>'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape'=>false]) ?>
-                                    <?= $this->Form->button(__('Close'), ['class'=>'btn btn-secondary', 'data-dismiss'=>'modal']) ?>
-                                </div>
-                            </div>
-                        <?= $this->Form->end() ?>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Required datatable js -->
 <?= $this->html->script('/plugins/datatables/jquery.dataTables.min') ?>

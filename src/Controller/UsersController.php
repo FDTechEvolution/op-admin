@@ -20,12 +20,26 @@ class UsersController extends AppController
      */
     public function index()
     {
+        //show all user
         $this->paginate = [
-            'contain' => ['Orgs']
+            'contain' => ['Orgs'],
         ];
         $users = $this->paginate($this->Users);
-
         $this->set(compact('users'));
+
+        //add user
+        $user = $this->Users->newEntity();
+        $this->loadComponent('UsersComp');
+        $this->loadComponent('OrgsComp');
+        if ($this->request->is('post')) {
+            $dataPost = $this->request->getData();
+
+            if ($this->UsersComp->create($user, $dataPost)) {
+                return $this->redirect(['action' => 'index']);
+            }
+        }
+        $orgs = $this->OrgsComp->orgList();
+        $this->set(compact('user', 'orgs'));
     }
 
     /**
@@ -38,7 +52,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Orgs']
+            'contain' => ['Orgs'],
         ]);
 
         $this->set('user', $user);
@@ -57,8 +71,8 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $dataPost = $this->request->getData();
 
-            if($this->UsersComp->create($user, $dataPost)){
-                return $this->redirect(['action'=>'index']);
+            if ($this->UsersComp->create($user, $dataPost)) {
+                return $this->redirect(['action' => 'index']);
             }
         }
         $orgs = $this->OrgsComp->orgList();
@@ -75,7 +89,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
