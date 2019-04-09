@@ -84,6 +84,24 @@ class OrgsController extends AppController {
         $this->set(compact('org'));
     }
 
+    public function setStat(){
+        $postData = $this->request->getData();
+        $id = $postData['orgID'];
+        $org = $this->Orgs->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $org = $this->Orgs->patchEntity($org, $postData);
+            if ($this->Orgs->save($org)) {
+                $this->Flash->success(__('The org has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The org could not be saved. Please, try again.'));
+        }
+        $this->set(compact('org'));
+    }
+
     /**
      * Delete method
      *

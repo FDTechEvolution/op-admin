@@ -45,18 +45,6 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-2 col-form-label">createdby</label>
-                                <div class="col-8">
-                                    <?php echo $this->Form->control('createdby', ['class'=>'form-control', 'label'=>false, 'value'=>'00000', 'disabled']); ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-2 col-form-label">modifiedby</label>
-                                <div class="col-8">
-                                    <?php echo $this->Form->control('modifiedby', ['class'=>'form-control', 'label'=>false, 'value'=>'00000', 'disabled']); ?>
-                                </div>
-                            </div>
                         </fieldset>
                         <div class="form-group row">
                             <div class="col-12 text-center">
