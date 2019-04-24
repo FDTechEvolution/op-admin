@@ -44,7 +44,7 @@
                             <td class="actions text-center">
                                 <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $org->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                                 <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $org->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
-                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('ยืนยันการลบ {0} ?', $org->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $org->id], ['confirm' => __('ยืนยันการลบ {0} ? \n ข้อควรระวัง...สมาชิกทั้งหมดที่มีอยู่ในรายการนี้จะถูกลบไปด้วย', $org->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

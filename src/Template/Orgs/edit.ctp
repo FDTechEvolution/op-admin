@@ -35,16 +35,6 @@
                                     <?php echo $this->Form->control('code', ['class'=>'form-control', 'label'=>false]); ?>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-2 col-form-label">สถานะ</label>
-                                <div class="col-8">
-                                    <?php if (h($org->isactive == 'Y')) { ?>
-                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']) ?>
-                                    <?php } else { ?>
-                                        <?= $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d']) ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
                         </fieldset>
                         <div class="form-group row">
                             <div class="col-12 text-center">

@@ -96,6 +96,24 @@ class UsersController extends AppController
         $this->set(compact('user', 'orgs'));
     }
 
+    public function setStat(){
+        $postData = $this->request->getData();
+        $id = $postData['orgID'];
+        $stat = $postData['isactive'];
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $userTable = $this->Users->find('orgID', $id);
+            $userTable->isactive = $stat;
+            if ($this->Users->save($org)) {
+                $this->Flash->success(__('The org has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The org could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user','org'));
+    }
+
     /**
      * Delete method
      *
