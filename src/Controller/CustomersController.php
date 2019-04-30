@@ -26,6 +26,19 @@ class CustomersController extends AppController
         $this->loadComponent('OrgsComp');
         $orgs = $this->OrgsComp->orgList();
         $this->set(compact('customer', 'orgs'));
+
+        
+        $cusTable = TableRegistry::get('Customers')->find();
+        foreach($cusTable as $cus){
+            $cus_id = $cus->id;
+            $cusAddrTable = TableRegistry::get('Customer_Addresses')->find()->where(['customer_id' => $cus_id]);
+                foreach($cusAddrTable as $cusAddr){
+                    $address_id = $cusAddr->address_id;
+                    $address = TableRegistry::get('Addresses')->find()->where(['id' => $address_id])->toArray();
+                        $this->set(compact('customer', 'addresses'));
+                }
+        }
+
     }
 
     /**

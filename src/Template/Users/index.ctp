@@ -46,7 +46,7 @@
                                     <?= $this->Form->button(__('<i class="mdi mdi-earth-off"></i> ปิดการใช้งาน'), ['class' => 'btn btn-outline-secondary', 'data-toggle' => 'modal', 'data-target' => '#statUserModal', 'data-id' => $user->id, 'data-value' => 'Y', 'escape' => false, 'title'=>'คลิกเพื่อเปิดใช้งาน']) ?>
                                 <?php } ?>
                             </td>
-                            <td class="actions">
+                            <td class="actions text-center">
                                 <?php
                                     $modalOpts = [
                                         'data-id'=>$user->id,
