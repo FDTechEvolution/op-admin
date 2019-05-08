@@ -27,19 +27,8 @@ class CustomersController extends AppController
         $orgs = $this->OrgsComp->orgList();
         $this->set(compact('customer', 'orgs'));
 
-        
-        $cusTable = TableRegistry::get('Customers')->find();
-        foreach($cusTable as $cus){
-            $cus_id = $cus->id;
-            $cusAddrTable = TableRegistry::get('Customer_Addresses')->find()->where(['customer_id' => $cus_id]);
-                foreach($cusAddrTable as $cusAddr){
-                    $address_id = $cusAddr->address_id;
-                    $address = TableRegistry::get('Addresses')->find()->where(['id' => $address_id])->toArray();
-                        $this->set(compact('customer', 'addresses'));
-                }
-        }
-
     }
+
 
     /**
      * View method
@@ -55,6 +44,13 @@ class CustomersController extends AppController
         ]);
 
         $this->set('customer', $customer);
+
+        $cusAddrTable = TableRegistry::get('Customer_Addresses')->find()->where(['customer_id' => $id]);
+            foreach($cusAddrTable as $cusAddr){
+                $address_id = $cusAddr->address_id;
+                $addressTable = TableRegistry::get('Addresses')->find()->where(['id' => $address_id]);
+                    $this->set(compact('addressTable'));
+            }
     }
 
     /**
@@ -104,17 +100,36 @@ class CustomersController extends AppController
     {
         $customer = $this->Customers->get($id, [
             'contain' => []
-        ]);
+        ]);  
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $customer = $this->Customers->patchEntity($customer, $this->request->getData());
             if ($this->Customers->save($customer)) {
-                $this->Flash->success(__('The customer has been saved.'));
+                $postData = $this->request->getData();
+                $addressID = $postData['address_id'];
 
+                $addresses = TableRegistry::get('Addresses');
+                $address = $addresses->find()->where(['id'=>$addressID])->toArray();
+                foreach($address as $addr){
+                    $addr->line1 = $postData['line1'];
+                    $addr->subdistrict = $postData['subdistrict'];
+                    $addr->district = $postData['district'];
+                    $addr->province = $postData['province'];
+                    $addr->zipcode = $postData['zipcode'];
+                    $addresses->save($addr);
+                }
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('customer'));
+
+        $cusAddrTable = TableRegistry::get('Customer_Addresses')->find()->where(['customer_id' => $id]);
+            foreach($cusAddrTable as $cusAddr){
+                $address_id = $cusAddr->address_id;
+                $addressTable = TableRegistry::get('Addresses')->find()->where(['id' => $address_id]);
+                    $this->set(compact('addressTable'));
+            }
     }
 
     /**
@@ -129,7 +144,18 @@ class CustomersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $customer = $this->Customers->get($id);
         if ($this->Customers->delete($customer)) {
-            $this->Flash->success(__('The customer has been deleted.'));
+            $cusAddrTable = TableRegistry::get('Customer_Addresses');
+            $cusAddrs = $cusAddrTable->find()->where(['customer_id' => $id]);
+            foreach($cusAddrs as $cusAddr){
+                $addressTable = TableRegistry::get('Addresses');
+                $addresses = $addressTable->find()->where(['id' => $cusAddr->address_id]);
+                foreach($addresses as $address){
+                    $address->id = $cusAddr->address_id;
+                    $addressTable->delete($address);
+                }
+                $cusAddr->customer_id = $id;
+                $cusAddrTable->delete($cusAddr);
+            }
         } else {
             $this->Flash->error(__('The customer could not be deleted. Please, try again.'));
         }
