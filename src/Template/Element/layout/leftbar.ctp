@@ -15,6 +15,9 @@
                 <li>
                     <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Organization </span>', ['controller'=>'orgs'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
+                <li>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Bussiness Partner </span>', ['controller'=>'bpartners'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                </li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-paint-bucket"></i> <span> UI Kit </span>

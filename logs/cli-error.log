@@ -23,3 +23,43 @@ Stack Trace:
 #20 {main}
 
 
+2019-06-04 13:02:29 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'admin_onlinepos.business_partners' doesn't exist in C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'business_partne...', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('business_partne...', Array)
+#2 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(555): Cake\Database\Schema\CachedCollection->describe('business_partne...')
+#3 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(680): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(288): Cake\ORM\Table->getPrimaryKey()
+#5 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(142): Bake\Shell\Task\TemplateTask->_loadController()
+#6 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\TemplateTask->main('Business_partne...')
+#7 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#8 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(371): Cake\Console\Shell->runCommand(Array, true)
+#9 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(166): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#10 C:\xampp\htdocs\git\onlinepos\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#11 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'admin_onlinepos.business_partners' doesn't exist in C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query('SHOW FULL COLUM...')
+#5 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(129): Cake\Database\Connection->execute('SHOW FULL COLUM...', Array)
+#8 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'business_partne...', Array, Object(Cake\Database\Schema\TableSchema))
+#9 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('business_partne...', Array)
+#10 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(555): Cake\Database\Schema\CachedCollection->describe('business_partne...')
+#11 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(680): Cake\ORM\Table->getSchema()
+#12 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(288): Cake\ORM\Table->getPrimaryKey()
+#13 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(142): Bake\Shell\Task\TemplateTask->_loadController()
+#14 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\TemplateTask->main('Business_partne...')
+#15 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#16 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(371): Cake\Console\Shell->runCommand(Array, true)
+#17 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(166): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#18 C:\xampp\htdocs\git\onlinepos\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#19 {main}
+
+
