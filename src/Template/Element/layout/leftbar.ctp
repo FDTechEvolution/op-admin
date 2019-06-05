@@ -3,15 +3,20 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <li class="menu-title">Main</li>
                 <li>
                     <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller'=>'dashboard'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link('<i class="fa fa-users"></i><span> Customer </span>', ['controller'=>'customers'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
                 <li>
                     <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller'=>'users'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
                 <li>
                     <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Organization </span>', ['controller'=>'orgs'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Bussiness Partner </span>', ['controller'=>'bpartners'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
                 </li>
 
                 <li class="has_sub">

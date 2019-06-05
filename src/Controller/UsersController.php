@@ -27,17 +27,7 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
 
-        //add user
-        $user = $this->Users->newEntity();
-        $this->loadComponent('UsersComp');
         $this->loadComponent('OrgsComp');
-        if ($this->request->is('post')) {
-            $dataPost = $this->request->getData();
-
-            if ($this->UsersComp->create($user, $dataPost)) {
-                return $this->redirect(['action' => 'index']);
-            }
-        }
         $orgs = $this->OrgsComp->orgList();
         $this->set(compact('user', 'orgs'));
     }
@@ -86,13 +76,15 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
+        $postData =$this->request->getData();
+        $id = $postData['userID'];
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $user = $this->Users->patchEntity($user, $postData);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -102,6 +94,24 @@ class UsersController extends AppController
         }
         $orgs = $this->Users->Orgs->find('list', ['limit' => 200]);
         $this->set(compact('user', 'orgs'));
+    }
+
+    public function setStat(){
+        $postData = $this->request->getData();
+        $id = $postData['orgID'];
+        $stat = $postData['isactive'];
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $userTable = $this->Users->find('orgID', $id);
+            $userTable->isactive = $stat;
+            if ($this->Users->save($org)) {
+                $this->Flash->success(__('The org has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The org could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user','org'));
     }
 
     /**

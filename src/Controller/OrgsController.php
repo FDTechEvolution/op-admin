@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Orgs Controller
@@ -84,6 +85,31 @@ class OrgsController extends AppController {
         $this->set(compact('org'));
     }
 
+    public function setStat(){
+        $postData = $this->request->getData();
+        $id = $postData['orgID'];
+        $getStat = $postData['isactive'];
+        $org = $this->Orgs->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $org = $this->Orgs->patchEntity($org, $postData);
+            if ($this->Orgs->save($org)) {
+                $userTable = TableRegistry::get('Users');
+                $users = $userTable->find()->where(['org_id'=>$org->id])->toArray();
+               
+                foreach($users as $user){
+                    $user->isactive = $getStat;
+                    $userTable->save($user);
+                }
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The org could not be saved. Please, try again.'));
+        }
+        $this->set(compact('org'));
+    }
+
     /**
      * Delete method
      *
@@ -95,7 +121,14 @@ class OrgsController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $org = $this->Orgs->get($id);
         if ($this->Orgs->delete($org)) {
-            $this->Flash->success(__('The org has been deleted.'));
+            $userTable = TableRegistry::get('Users');
+            $users = $userTable->find()->where(['org_id'=>$org->id])->toArray();
+
+            foreach($users as $user){
+                $user->org_id = $org->id;
+                $userTable->delete($user);
+            }
+
         } else {
             $this->Flash->error(__('The org could not be deleted. Please, try again.'));
         }
