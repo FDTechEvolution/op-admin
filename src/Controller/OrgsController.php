@@ -20,9 +20,20 @@ class OrgsController extends AppController {
      * @return \Cake\Http\Response|void
      */
     public function index() {
-        $orgs = $this->paginate($this->Orgs);
+        $this->getRequest()->getSession()->write('Core.golbal.org_id',NULL);
+        $orgs = $this->Orgs->find()
+                ->where(['Orgs.id !='=>'0'])
+                ->toArray();
 
+        $ORG_ID = NULL;
+        $this->set(compact('ORG_ID'));
         $this->set(compact('orgs'));
+    }
+    
+    public function dashboard($orgId = null){
+        $this->getRequest()->getSession()->write('Core.golbal.org_id',$orgId);
+        $ORG_ID = $orgId;
+        $this->set(compact('ORG_ID'));
     }
 
     /**

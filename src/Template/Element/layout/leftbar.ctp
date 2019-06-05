@@ -4,20 +4,23 @@
         <div id="sidebar-menu">
             <ul>
                 <li>
-                    <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller'=>'dashboard'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                    <?= $this->Html->link('<i class="ti-home"></i><span> Dashboard </span>', ['controller' => 'dashboard'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                 </li>
+
                 <li>
-                    <?= $this->Html->link('<i class="fa fa-users"></i><span> Customer </span>', ['controller'=>'customers'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Organization </span>', ['controller' => 'orgs'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                 </li>
-                <li>
-                    <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller'=>'users'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Organization </span>', ['controller'=>'orgs'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Bussiness Partner </span>', ['controller'=>'bpartners'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
-                </li>
+                <?php if ((isset($ORG_ID)) && !is_null($ORG_ID) && $ORG_ID != '') { ?>
+                    <li>
+                        <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Bussiness Partner </span>', ['controller' => 'bpartners'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                    </li>
+                    <li>
+                        <?= $this->Html->link('<i class="fa fa-users"></i><span> Customer </span>', ['controller' => 'customers'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                    </li>
+                    <li>
+                        <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller' => 'users'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                    </li>
+                <?php } ?>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-paint-bucket"></i> <span> UI Kit </span>
@@ -28,7 +31,7 @@
                 </li>
 
                 <li>
-                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Log out </span>', ['controller'=>'logout'], ['class' => 'waves-effect waves-primary','escape'=>false]) ?>
+                    <?= $this->Html->link('<i class="mdi mdi-group"></i><span> Log out </span>', ['controller' => 'logout'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                 </li>
             </ul>
 
