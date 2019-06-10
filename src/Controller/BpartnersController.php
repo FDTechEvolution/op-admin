@@ -61,8 +61,7 @@ class BpartnersController extends AppController
 
         $partnerAddrTable = TableRegistry::get('Bpartner_Addresses')->find()->where(['bpartner_id' => $id]);
             foreach($partnerAddrTable as $partnerAddr){
-                $address_id = $partnerAddr->address_id;
-                $addressTable = TableRegistry::get('Addresses')->find()->where(['id' => $address_id]);
+                $addressTable = TableRegistry::get('Addresses')->find()->where(['id' => $partnerAddr->address_id])->toArray();
                     $this->set(compact('addressTable'));
             }
     }
@@ -101,6 +100,25 @@ class BpartnersController extends AppController
 
         $orgs = $this->OrgsComp->orgList();
         $this->set(compact('bpartner', 'orgs'));
+    }
+
+    public function addAddress($id = null){
+        $postData =$this->request->getData();
+        $id = $postData['partnerID'];
+        $addressTable = TableRegistry::get('Addresses');
+        $address = $addressTable->newEntity();
+        $address = $addressTable->patchEntity($address, $this->request->getData());
+            if($addressTable->save($address)){
+                $addr_id = $address->id;
+                $partner_address_Table = TableRegistry::get('Bpartner_Addresses');
+                $partner_address = $partner_address_Table->newEntity();
+                $partner_address->bpartner_id = $id;
+                $partner_address->address_id = $addr_id;
+                $partner_address->seq = 0;
+                $partner_address_Table->save($partner_address);
+            }
+
+        return $this->redirect(['action' => 'view']);
     }
 
     /**

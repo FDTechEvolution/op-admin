@@ -44,7 +44,7 @@
             <h3>Address</h3>
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <?= $this->Html->link(__('เพิ่มที่อยู่'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addPartnerModal', 'escape' => false]) ?>
+                    <?= $this->Html->link(__('เพิ่มที่อยู่'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addAddressPartnerModal', 'escape' => false]) ?>
                 </div>
             </div>
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
@@ -80,6 +80,7 @@
                             <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $bpartner->id], ['confirm' => __('ยืนยันการลบ '.$bpartner->name.' ?', $bpartner->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
+                    <?php $no+1; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -139,6 +140,72 @@
                 <div class="form-group row">
                     <div class="col-12 text-center">
                         <?= $this->Form->button(__('<i class=" mdi mdi-auto-upload"></i> UPDATE'), ['class' => 'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape' => false]) ?>
+                        <?= $this->Form->button(__('<i class="mdi mdi-close-circle"></i> Cancel'), ['class' => 'btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5', 'data-dismiss' => 'modal', 'escape' => false]) ?>
+                    </div>
+                </div>
+                <?= $this->Form->end() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD PARTNER ADDRESS -->
+<div class="modal fade" id="addAddressPartnerModal" tabindex="-1" role="dialog" aria-labelledby="addAddressPartnerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="addPartnerModalLabel">Add Bussiness Partner Address</h5>
+            </div>
+            <div class="modal-body">
+                <?= $this->Form->create('partner', ['url'=>['controller'=>'bpartners', 'action'=>'addAddress'], 'class' => 'form-horizontal', 'role' => 'form']) ?>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-12" style="border-left: 1px solid #ddd; padding: 20px;">
+                            <h3 style="margin-bottom: 20px;">รายละเอียดที่อยู่</h3>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Address</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('line1', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Subdistrict</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('subdistrict', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">District</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('district', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Province</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('province', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Zipcode</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('zipcode', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Description</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <?php echo $this->Form->control('partnerID', ['class' => 'form-control', 'label' => false, 'type' => 'hidden', 'value' => $bpartner->id]) ?>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <div class="form-group row">
+                    <div class="col-12 text-center">
+                        <?= $this->Form->button(__('<i class="mdi mdi-content-save"></i> SAVE'), ['class' => 'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape' => false]) ?>
                         <?= $this->Form->button(__('<i class="mdi mdi-close-circle"></i> Cancel'), ['class' => 'btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5', 'data-dismiss' => 'modal', 'escape' => false]) ?>
                     </div>
                 </div>
