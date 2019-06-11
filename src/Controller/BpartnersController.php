@@ -61,9 +61,11 @@ class BpartnersController extends AppController
 
         $partnerAddrTable = TableRegistry::get('Bpartner_Addresses')->find()->where(['bpartner_id' => $id]);
             foreach($partnerAddrTable as $partnerAddr){
-                $addressTable = TableRegistry::get('Addresses')->find()->where(['id' => $partnerAddr->address_id])->toArray();
-                    $this->set(compact('addressTable'));
+                $addressTable = TableRegistry::get('Addresses')
+                ->find('all')
+                ->where(['id' => $partnerAddr->address_id]);
             }
+            $this->set(compact('addressTable'));
     }
 
     /**
