@@ -54,18 +54,10 @@ class BpartnersController extends AppController
     public function view($id = null)
     {
         $bpartner = $this->Bpartners->get($id, [
-            'contain' => []
+            'contain' => ['BpartnerAddresses'=>['Addresses']]
         ]);
 
         $this->set('bpartner', $bpartner);
-
-        $partnerAddrTable = TableRegistry::get('Bpartner_Addresses')->find()->where(['bpartner_id' => $id]);
-            foreach($partnerAddrTable as $partnerAddr){
-                $addressTable = TableRegistry::get('Addresses')
-                ->find('all')
-                ->where(['id' => $partnerAddr->address_id]);
-            }
-            $this->set(compact('addressTable'));
     }
 
     /**

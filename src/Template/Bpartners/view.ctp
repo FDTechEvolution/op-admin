@@ -56,11 +56,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($addressTable as $address): ?>
-                    <?php $no = 1; ?>
+                
+                    <?php foreach ($bpartner->bpartner_addresses as $key => $bpAddress): ?>
+                    <?php $address = $bpAddress->address;?>
                     <tr>
-                        <td class="text-center"><?php echo $no; ?></td>
-                        <td><?= h($address->line1)." ".h($address->subdistrict)." ".h($address->district)." ".h($address->province)." ".h($address->zipcode)?></td>
+                        <td class="text-center"><?=($key+1)?></td>
+                        <td><?= h($address->line1)." <strong>แขวง/ตำบล : </strong>".h($address->subdistrict)." <strong>เขต/อำเภอ : </strong>".h($address->district)." <strong>จังหวัด : </strong>".h($address->province)." <strong>รหัสไปรษณีย์ : </strong>".h($address->zipcode)?></td>
                         <td class="actions text-center">
                             <?php
                                 $modalOpts = [
@@ -80,7 +81,6 @@
                             <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $bpartner->id], ['confirm' => __('ยืนยันการลบ '.$bpartner->name.' ?', $bpartner->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
-                    <?php $no+1; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
