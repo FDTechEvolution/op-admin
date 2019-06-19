@@ -17,18 +17,18 @@
         <div class="card-box">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <?= $this->Html->link(__('Add New'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addPartnerModal', 'escape' => false]) ?>
+                    <?= $this->Html->link(__('<i class="mdi mdi-account-multiple-plus"></i> เพิ่ม Partner'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addPartnerModal', 'escape' => false]) ?>
                 </div>
             </div>
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('company') ?></th>
-                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col" style="width: 12%;" class="text-center"><?= $this->Paginator->sort('level') ?></th>
-                        <th scope="col" style="width: 13%;" class="text-center"><?= __('Mobile') ?></th>
-                        <th scope="col" style="width: 30%;" class="actions text-center"><?= __('Actions') ?></th>
+                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('บริษัท/ห้างร้าน') ?></th>
+                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('ชื่อผู้ติดต่อ') ?></th>
+                        <th scope="col" style="width: 12%;" class="text-center"><?= $this->Paginator->sort('ระดับ') ?></th>
+                        <th scope="col" style="width: 13%;" class="text-center"><?= __('โทรศัพท์') ?></th>
+                        <th scope="col" style="width: 30%;" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,17 +54,15 @@
                                     'data-level'=>$bpartner->level,
                                     'data-mobile'=>$bpartner->mobile,
                                     'data-description'=>h($bpartner->description),
-                                    'class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 
+                                    'class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5',
                                     'data-toggle' => 'modal', 
                                     'data-target' => '#editPartnerModal',
                                     'escape' => false
                                 ];
                             ?>
-                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $bpartner->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
-            <!--
-                            <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'index'], $modalOpts ) ?>
+                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $bpartner->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'style' => 'margin-right: 20px;', 'escape' => false]) ?>
+                                <!--<?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'index'], $modalOpts ) ?>-->
                             <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $bpartner->id], ['confirm' => __('ยืนยันการลบ '.$bpartner->name.' ?', $bpartner->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
-            -->
                         </td>
                     </tr>
                     <?php endforeach; ?>

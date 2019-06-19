@@ -112,7 +112,7 @@ class BpartnersController extends AppController
                 $partner_address_Table->save($partner_address);
             }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'view', $id]);
     }
 
     /**
@@ -134,7 +134,7 @@ class BpartnersController extends AppController
             if ($this->Bpartners->save($bpartner)) {
                 $this->Flash->success(__('The bpartner has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $id]);
             }
             $this->Flash->error(__('The bpartner could not be saved. Please, try again.'));
         }
@@ -145,6 +145,7 @@ class BpartnersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $postData=$this->request->getData();
             $id = $postData['addressID'];
+            $bpartnerID = $postData['partnerID'];
             
             $addressTable = TableRegistry::get('Addresses');
             $address = $addressTable->find()->where(['id' => $id])->toArray();
@@ -157,7 +158,7 @@ class BpartnersController extends AppController
                     $addr->description = $postData['description'];
                     $addressTable->save($addr);
                 }
-            return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'view', $bpartnerID]);
         }
     }
 
@@ -173,7 +174,18 @@ class BpartnersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $bpartner = $this->Bpartners->get($id);
         if ($this->Bpartners->delete($bpartner)) {
-            $this->Flash->success(__('The bpartner has been deleted.'));
+            $partnerAddressTable = TableRegistry::get('Bpartner_Addresses');
+            $partnerAddresses = $partnerAddressTable->find()->where(['bpartner_id' => $id]);
+                foreach($partnerAddresses as $partnerAddress){
+                    $addressTable = TableRegistry::get('Addresses');
+                    $addresses = $addressTable->find()->where(['id' => $partnerAddress->address_id]);
+                        foreach($addresses as $address){
+                            $address->id = $partnerAddress->address_id;
+                            $addressTable->delete($address);
+                        }
+                    $partnerAddress->address_id = $id;
+                    $partnerAddressTable->delete($partnerAddress);
+                }
         } else {
             $this->Flash->error(__('The bpartner could not be deleted. Please, try again.'));
         }
@@ -181,20 +193,25 @@ class BpartnersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function delAddress($id = null){
-        $this->request->allowMethod(['post', 'delete']);
-        $partnerAddressTable = TableRegistry::get('Bpartner_Addresses');
-        $partnerAddresses = $partnerAddressTable->find()->where(['address_id' => $id]);
-            foreach($partnerAddresses as $partnerAddress){
-                $addressTable = TableRegistry::get('Addresses');
-                $addresses = $addressTable->find()->where(['id' => $partnerAddress->address_id]);
-                    foreach($addresses as $address){
-                        $address->id = $partnerAddress->address_id;
-                        $addressTable->delete($address);
-                    }
-                $partnerAddress->address_id = $id;
-                $partnerAddressTable->delete($partnerAddress);
-            }
-        return $this->redirect(['action' => 'index']);
+    public function delAddress(){
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $postData=$this->request->getData();
+            $id = $postData['addressID'];
+            $bpartnerID = $postData['partnerID'];
+
+            $partnerAddressTable = TableRegistry::get('Bpartner_Addresses');
+            $partnerAddresses = $partnerAddressTable->find()->where(['address_id' => $id]);
+                foreach($partnerAddresses as $partnerAddress){
+                    $addressTable = TableRegistry::get('Addresses');
+                    $addresses = $addressTable->find()->where(['id' => $partnerAddress->address_id]);
+                        foreach($addresses as $address){
+                            $address->id = $partnerAddress->address_id;
+                            $addressTable->delete($address);
+                        }
+                    $partnerAddress->address_id = $id;
+                    $partnerAddressTable->delete($partnerAddress);
+                }
+            return $this->redirect(['action' => 'view', $bpartnerID]);
+        }
     }
 }
