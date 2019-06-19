@@ -7,12 +7,24 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-box">
+            <?php 
+                $modalPartner = [
+                    'data-id' => $bpartner->id,
+                    'data-company' => $bpartner->company,
+                    'data-name' => $bpartner->name,
+                    'data-mobile' => $bpartner->mobile,
+                    'data-description' => $bpartner->description,
+                    'class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#editPartnerModal',
+                    'escape' => false
+                    ];
+            ?>
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <?= $this->Html->link(__('Edit'), ['action' => 'add'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addPartnerModal', 'escape' => false]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit'], $modalPartner) ?>
                 </div>
             </div>
-
                 <div class="bpartners view large-9 medium-8 columns content">
                     <h3><?= h($bpartner->name) ?></h3>
                     <table class="vertical-table">
@@ -61,7 +73,7 @@
                     <?php $address = $bpAddress->address;?>
                     <tr>
                         <td class="text-center"><?=($key+1)?></td>
-                        <td><?= h($address->line1)." <strong>แขวง/ตำบล : </strong>".h($address->subdistrict)." <strong>เขต/อำเภอ : </strong>".h($address->district)." <strong>จังหวัด : </strong>".h($address->province)." <strong>รหัสไปรษณีย์ : </strong>".h($address->zipcode)?></td>
+                        <td><?= h($address->line1)." ต.".h($address->subdistrict)." อ.".h($address->district)." จ.".h($address->province)." ".h($address->zipcode)?></td>
                         <td class="actions text-center">
                             <?php
                                 $modalOpts = [
@@ -73,12 +85,12 @@
                                     'data-zipcode'=>$address->zipcode,
                                     'class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 
                                     'data-toggle' => 'modal', 
-                                    'data-target' => '#editPartnerModal',
+                                    'data-target' => '#editPartnerAddress',
                                     'escape' => false
                                 ];
                             ?>
                             <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'index'], $modalOpts ) ?>
-                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $bpartner->id], ['confirm' => __('ยืนยันการลบ '.$bpartner->name.' ?', $bpartner->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delAddress', $address->id], ['confirm' => __('ยืนยันการลบ ?', $address->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -88,16 +100,63 @@
     </div>
 </div>
 
-
 <!-- Edit Partner -->
 <div class="modal fade" id="editPartnerModal" tabindex="-1" role="dialog" aria-labelledby="editPartnerModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editPartnerModalLabel">รายละเอียดที่อยู่</h5>
+                <h5 class="modal-title" id="editPartnerModalLabel">รายละเอียด</h5>
             </div>
             <div class="modal-body">
                 <?= $this->Form->create('partner', ['url'=>['controler'=>'bpartners', 'action'=>'edit'], 'class' => 'form-horizontal', 'role' => 'form','id'=>'frm_edit']) ?>
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Company</label>
+                        <div class="col-9">
+                            <?php echo $this->Form->control('company', ['class' => 'form-control', 'label' => false]); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Name</label>
+                        <div class="col-9">
+                            <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Mobile</label>
+                        <div class="col-9">
+                            <?php echo $this->Form->control('mobile', ['class' => 'form-control', 'label' => false]); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">Description</label>
+                        <div class="col-9">
+                            <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
+                        </div>
+                    </div>
+                    <?php echo $this->Form->control('partnerID', ['class' => 'form-control', 'label' => false, 'type' => 'hidden']); ?>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-12 text-center">
+                        <?= $this->Form->button(__('<i class=" mdi mdi-auto-upload"></i> UPDATE'), ['class' => 'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape' => false]) ?>
+                        <?= $this->Form->button(__('<i class="mdi mdi-close-circle"></i> Cancel'), ['class' => 'btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5', 'data-dismiss' => 'modal', 'escape' => false]) ?>
+                    </div>
+                </div>
+                <?= $this->Form->end() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Partner Address -->
+<div class="modal fade" id="editPartnerAddress" tabindex="-1" role="dialog" aria-labelledby="editPartnerAddressLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPartnerAddressLabel">รายละเอียดที่อยู่</h5>
+            </div>
+            <div class="modal-body">
+                <?= $this->Form->create('address', ['url'=>['controler'=>'bpartners', 'action'=>'editAddress'], 'class' => 'form-horizontal', 'role' => 'form','id'=>'frm_edit_address']) ?>
                 <fieldset>
                     <div class="form-group row">
                         <label class="col-3 col-form-label">Address</label>
@@ -135,7 +194,7 @@
                             <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
-                    <?php echo $this->Form->control('partnerID', ['class' => 'form-control', 'label' => false, 'type' => 'hidden']); ?>
+                    <?php echo $this->Form->control('addressID', ['class' => 'form-control', 'label' => false, 'type' => 'hidden']); ?>
                 </fieldset>
                 <div class="form-group row">
                     <div class="col-12 text-center">
@@ -253,6 +312,20 @@
 
         $('#editPartnerModal').on('show.bs.modal', function (e) {
             var partnerId = $(e.relatedTarget).data('id');
+            var company = $(e.relatedTarget).data('company');
+            var name = $(e.relatedTarget).data('name');
+            var mobile = $(e.relatedTarget).data('mobile');
+            var description = $(e.relatedTarget).data('description');
+            
+            $(e.currentTarget).find('input[name="partnerID"]').val(partnerId);
+            $('#frm_edit input[name="company"]').val(company);
+            $('#frm_edit input[name="name"]').val(name);
+            $('#frm_edit input[name="mobile"]').val(mobile);
+            $('#frm_edit textarea[name="description"]').val(description);
+        });
+
+        $('#editPartnerAddress').on('show.bs.modal', function (e) {
+            var addressId = $(e.relatedTarget).data('id');
             var line1 = $(e.relatedTarget).data('line1');
             var subdistrict = $(e.relatedTarget).data('subdistrict');
             var district = $(e.relatedTarget).data('district');
@@ -260,13 +333,13 @@
             var zipcode = $(e.relatedTarget).data('zipcode');
             var description = $(e.relatedTarget).data('description');
             
-            $(e.currentTarget).find('input[name="partnerID"]').val(partnerId);
-            $('#frm_edit input[name="line1"]').val(line1);
-            $('#frm_edit input[name="subdistrict"]').val(subdistrict);
-            $('#frm_edit input[name="district"]').val(district);
-            $('#frm_edit input[name="province"]').val(province);
-            $('#frm_edit input[name="zipcode"]').val(zipcode);
-            $('#frm_edit textarea[name="description"]').val(description);
+            $(e.currentTarget).find('input[name="addressID"]').val(addressId);
+            $('#frm_edit_address input[name="line1"]').val(line1);
+            $('#frm_edit_address input[name="subdistrict"]').val(subdistrict);
+            $('#frm_edit_address input[name="district"]').val(district);
+            $('#frm_edit_address input[name="province"]').val(province);
+            $('#frm_edit_address input[name="zipcode"]').val(zipcode);
+            $('#frm_edit_address textarea[name="description"]').val(description);
         });
     });
 
