@@ -20,6 +20,21 @@
                     <li>
                         <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller' => 'users'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                     </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-product-hunt"></i> <span style="font-size: 14px;"> Product Management </span>
+                            <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <?= $this->Html->link('- Brand </span>', ['controller' => 'brands'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                            <li>
+                                <?= $this->Html->link('- Category </span>', ['controller' => 'customers'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                            <li>
+                                <?= $this->Html->link('- Product </span>', ['controller' => 'customers'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                        </ul>
+                    </li>
                 <?php } ?>
 
                 <li class="has_sub">
