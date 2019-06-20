@@ -24,11 +24,11 @@
                 <thead>
                     <tr>
                         <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('บริษัท/ห้างร้าน') ?></th>
-                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('ชื่อผู้ติดต่อ') ?></th>
-                        <th scope="col" style="width: 12%;" class="text-center"><?= $this->Paginator->sort('ระดับ') ?></th>
-                        <th scope="col" style="width: 13%;" class="text-center"><?= __('โทรศัพท์') ?></th>
-                        <th scope="col" style="width: 30%;" class="actions text-center"><?= __('การจัดการ') ?></th>
+                        <th scope="col" style="width: 20%;"><?= $this->Paginator->sort('บริษัท/ห้างร้าน') ?></th>
+                        <th scope="col" style="width: 20%;"><?= $this->Paginator->sort('ชื่อผู้ติดต่อ') ?></th>
+                        <th scope="col" style="width: 10%;" class="text-center"><?= $this->Paginator->sort('ระดับ') ?></th>
+                        <th scope="col" style="width: 15%;" class="text-center"><?= __('โทรศัพท์') ?></th>
+                        <th scope="col" style="width: 20%;" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,7 @@
                                     'escape' => false
                                 ];
                             ?>
-                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $bpartner->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'style' => 'margin-right: 20px;', 'escape' => false]) ?>
+                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $bpartner->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'style' => 'margin-right: 10px;', 'escape' => false]) ?>
                                 <!--<?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'index'], $modalOpts ) ?>-->
                             <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $bpartner->id], ['confirm' => __('ยืนยันการลบ '.$bpartner->name.' ?', $bpartner->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
@@ -75,7 +75,7 @@
 
 <!-- ADD PARTNER -->
 <div class="modal fade" id="addPartnerModal" tabindex="-1" role="dialog" aria-labelledby="addPartnerModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 80%;">
+    <div class="modal-dialog" role="document" style="max-width: 90%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addPartnerModalLabel">Add Bussiness Partner</h5>
@@ -93,31 +93,31 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Company (ถ้ามี)</label>
+                                <label class="col-3 col-form-label">บริษัท/ห้างร้าน (ถ้ามี)</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('company', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Name</label>
+                                <label class="col-3 col-form-label">ชื่อ</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Level</label>
+                                <label class="col-3 col-form-label">ระดับ</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->select('level', ['Vendor' => 'Vendor', 'Dealer' => 'Dealer'], ['empty' => '(choose one)', 'class' => 'form-control select2', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Mobile</label>
+                                <label class="col-3 col-form-label">โทรศัพท์</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('mobile', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Description</label>
+                                <label class="col-3 col-form-label">รายละเอียดเพิ่มเติม</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
@@ -126,37 +126,37 @@
                         <div class="col-6" style="border-left: 1px solid #ddd; padding: 20px;">
                             <h3 style="margin-bottom: 20px;">รายละเอียดที่อยู่</h3>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Address</label>
+                                <label class="col-3 col-form-label">ที่อยู่</label>
                                 <div class="col-9">
-                                    <?php echo $this->Form->control('line1', ['class' => 'form-control', 'label' => false]); ?>
+                                    <?php echo $this->Form->control('line1', ['class' => 'form-control', 'placeholder' => 'เลขที่ ถนน หมู่บ้าน อาคาร ชั้น', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Subdistrict</label>
+                                <label class="col-3 col-form-label">แขวง/อำเภอ</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('subdistrict', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">District</label>
+                                <label class="col-3 col-form-label">เขต/ตำบล</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('district', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Province</label>
+                                <label class="col-3 col-form-label">จังหวัด</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('province', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Zipcode</label>
+                                <label class="col-3 col-form-label">รหัสไปรษณีย์</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('zipcode', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Description</label>
+                                <label class="col-3 col-form-label">รายละเอียดเพิ่มเติม</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>

@@ -11,16 +11,16 @@
         <div class="card-box">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <?= $this->Form->button(__('<i class="fa fa-user-plus"></i> ADD CUSTOMER'), ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addCustomerModal', 'escape' => false]) ?>
+                    <?= $this->Form->button(__('<i class="fa fa-user-plus"></i> เพิ่มลูกค้า'), ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'data-toggle' => 'modal', 'data-target' => '#addCustomerModal', 'escape' => false]) ?>
                 </div>
             </div>
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col" style="width: 20%;"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col" style="width: 25%;"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col" style="width: 25%;"><?= $this->Paginator->sort('mobile') ?></th>
-                        <th scope="col" style="width: 30%;" class="actions text-center"><?= __('Actions') ?></th>
+                        <th scope="col" style="width: 25%;"><?= $this->Paginator->sort('ชื่อลูกค้า') ?></th>
+                        <th scope="col" style="width: 25%;"><?= $this->Paginator->sort('โทรศัพท์') ?></th>
+                        <th scope="col" style="width: 30%;" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCustomerModalLabel">Add Customer</h5>
+                <h5 class="modal-title" id="addCustomerModalLabel">เพิ่มรายละเอียดลูกค้า</h5>
             </div>
             <div class="modal-body">
                 <?= $this->Form->create('customer', ['url'=>['controller'=>'customers', 'action'=>'add'], 'class' => 'form-horizontal', 'role' => 'form']) ?>
@@ -59,49 +59,49 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Name</label>
+                        <label class="col-3 col-form-label">ชื่อลูกค้า</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Mobile</label>
+                        <label class="col-3 col-form-label">โทรศัพท์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('mobile', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Address</label>
+                        <label class="col-3 col-form-label">ที่อยู่</label>
                         <div class="col-9">
-                            <?php echo $this->Form->control('line1', ['class' => 'form-control', 'label' => false]); ?>
+                            <?php echo $this->Form->control('line1', ['class' => 'form-control', 'placeholder' => 'เลขที่ ถนน หมู่บ้าน อาคาร ชั้น', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Subdistrict</label>
+                        <label class="col-3 col-form-label">แขวง/ตำบล</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('subdistrict', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">District</label>
+                        <label class="col-3 col-form-label">เขต/อำเภอ</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('district', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Province</label>
+                        <label class="col-3 col-form-label">จังหวัด</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('province', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Zipcode</label>
+                        <label class="col-3 col-form-label">รหัสไปรษณีย์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('zipcode', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Description</label>
+                        <label class="col-3 col-form-label">รายละเอียด</label>
                         <div class="col-9">
                             <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                         </div>

@@ -9,7 +9,8 @@
         display: none;
     }
     table.vertical-table tbody tr th {
-        padding: 0.2em 0;
+        line-height: 36px;
+        width: 200px;
     }
     .table td{
         vertical-align: middle;
@@ -66,18 +67,26 @@
                         </div>
                         <div class="col-6">
                             <div class="row">
-                                <h5><?= __('<i class="mdi mdi-comment-text-outline"></i> รายละเอียดเพิ่มเติม....') ?></h5>
-                                <?php
-                                    if($bpartner->description != "") :
-                                ?>
-                                        <?= $this->Text->autoParagraph(h($bpartner->description)); ?>
-                                <?php
-                                    else :
-                                ?>
-                                        <?= $this->Text->autoParagraph(h('ไม่มีการระบุรายละเอียดเพิ่มเติมใดๆ.......................................................................')); ?>
-                                <?php
-                                    endif;
-                                ?>
+                                <table>
+                                    <tr>
+                                        <th><h5><?= __('<i class="mdi mdi-comment-text-outline"></i> รายละเอียดเพิ่มเติม....') ?></h5></th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 30px;">
+                                            <?php
+                                                if($bpartner->description != "") :
+                                            ?>
+                                                    <?= $this->Text->autoParagraph(h($bpartner->description)); ?>
+                                            <?php
+                                                else :
+                                            ?>
+                                                    <?= $this->Text->autoParagraph(h('ไม่มีการระบุรายละเอียดเพิ่มเติมใดๆ.......')); ?>
+                                            <?php
+                                                endif;
+                                            ?>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>

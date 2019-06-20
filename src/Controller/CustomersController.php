@@ -27,6 +27,10 @@ class CustomersController extends AppController
         $orgs = $this->OrgsComp->orgList();
         $this->set(compact('customer', 'orgs'));
 
+        //$customers = $this->Customers->find()
+        //->contain(['Orgs'])
+        //->toArray();
+
     }
 
 

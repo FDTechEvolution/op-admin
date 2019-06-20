@@ -25,11 +25,11 @@
                 <thead>
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                        <th scope="col" class="text-center"><?= $this->Paginator->sort('mobile') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('ชื่อ') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('อีเมล์') ?></th>
+                        <th scope="col" class="text-center"><?= __('โทรศัพท์') ?></th>
                         <th scope="col" class="text-center"><?= __('สถานะ') ?></th>
-                        <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
+                        <th scope="col" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@
                             <td><?= $user->has('org') ? $this->Html->link($user->org->name, ['controller' => 'Orgs', 'action' => 'view', $user->org->id]) : '' ?></td>
                             <td><?= h($user->name) ?></td>
                             <td><?= h($user->email) ?></td>
-                            <td><?= h($user->mobile) ?></td>
+                            <td class="text-center"><?= h($user->mobile) ?></td>
                             <td class="text-center">
                                 <?php if(h($user->isactive == 'Y')) { ?>
                                     <?= $this->Form->button(__('<i class="mdi mdi-earth"></i> เปิดใช้งาน'), ['class' => 'btn btn-success waves-effect waves-light', 'data-toggle' => 'modal', 'data-target' => '#statUserModal', 'data-id' => $user->id, 'data-value' => 'N', 'escape' => false, 'title'=>'คลิกเพื่อปิดการใช้งาน']) ?>
@@ -75,10 +75,10 @@
 
 <!-- ADD USER -->
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="max-width: 50%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add New</h5>
+                <h5 class="modal-title" id="addUserModalLabel">เพิ่มรายชื่อ USER</h5>
             </div>
             <div class="modal-body">
                 <?= $this->Form->create('user', ['url'=>['controller'=>'users', 'action'=>'add'], 'class' => 'form-horizontal', 'role' => 'form']) ?>
@@ -90,37 +90,37 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Name</label>
+                        <label class="col-3 col-form-label">ชื่อ</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Email</label>
+                        <label class="col-3 col-form-label">อีเมล์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('email', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Mobile</label>
+                        <label class="col-3 col-form-label">โทรศัพท์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('mobile', ['class' => 'form-control', 'label' => false, 'type' => 'number']); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Password</label>
+                        <label class="col-3 col-form-label">รหัสผ่าน</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('password', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">isactive</label>
+                        <label class="col-3 col-form-label">สถานะการใช้งาน</label>
                         <div class="col-9">
                             <?php echo $this->Form->checkbox('isactive', ['data-plugin' => 'switchery', 'data-color' => '#00b19d', 'checked']); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">description</label>
+                        <label class="col-3 col-form-label">รายละเอียด</label>
                         <div class="col-9">
                             <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
@@ -144,31 +144,31 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit</h5>
+                <h5 class="modal-title" id="editUserModalLabel">แก้ไขรายละเอียด USER</h5>
             </div>
             <div class="modal-body">
                 <?= $this->Form->create('user', ['url'=>['controler'=>'users', 'action'=>'edit'], 'class' => 'form-horizontal', 'role' => 'form','id'=>'frm_edit']) ?>
                 <fieldset>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Name</label>
+                        <label class="col-3 col-form-label">ชื่อ</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Email</label>
+                        <label class="col-3 col-form-label">อีเมล์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('email', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Mobile</label>
+                        <label class="col-3 col-form-label">โทรศัพท์</label>
                         <div class="col-9">
                             <?php echo $this->Form->control('mobile', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-3 col-form-label">Description</label>
+                        <label class="col-3 col-form-label">รายละเอียด</label>
                         <div class="col-9">
                             <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                         </div>
