@@ -28,10 +28,10 @@
                                 <?= $this->Html->link('- Brand </span>', ['controller' => 'brands'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                             <li>
-                                <?= $this->Html->link('- Category </span>', ['controller' => 'customers'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                                <?= $this->Html->link('- Category </span>', ['controller' => 'productCategories'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                             <li>
-                                <?= $this->Html->link('- Product </span>', ['controller' => 'customers'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                                <?= $this->Html->link('- Product </span>', ['controller' => 'products'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                         </ul>
                     </li>

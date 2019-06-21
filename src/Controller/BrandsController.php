@@ -26,7 +26,7 @@ class BrandsController extends AppController
 
         $this->loadComponent('OrgsComp');
         $orgs = $this->OrgsComp->orgList();
-        $this->set(compact('bpartner', 'orgs'));
+        $this->set(compact('brands', 'orgs'));
 
         $brands = $this->paginate($this->Brands);
         $this->set(compact('brands'));
@@ -76,13 +76,15 @@ class BrandsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
+        $postData = $this->request->getData();
+        $id = $postData['brandID'];
         $brand = $this->Brands->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $brand = $this->Brands->patchEntity($brand, $this->request->getData());
+            $brand = $this->Brands->patchEntity($brand, $postData);
             if ($this->Brands->save($brand)) {
                 $this->Flash->success(__('The brand has been saved.'));
 

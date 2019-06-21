@@ -24,8 +24,8 @@
                 <thead>
                     <tr>
                         <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col" style="width: 15%;"><?= $this->Paginator->sort('ชื่อยี่ห้อ') ?></th>
-                        <th scope="col" style="width: 50%;"><?= $this->Paginator->sort('รายละเอียด') ?></th>
+                        <th scope="col" style="width: 15%;"><?= __('ชื่อยี่ห้อ') ?></th>
+                        <th scope="col" style="width: 50%;"><?= __('รายละเอียด') ?></th>
                         <th scope="col" style="width: 20%;" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
@@ -35,10 +35,21 @@
                         <td><?= $brand->has('org') ? $this->Html->link($brand->org->name, ['controller' => 'Orgs', 'action' => 'view', $brand->org->id]) : '' ?></td>
                         <td><?= h($brand->name) ?></td>
                         <td><?= h($brand->description) ?></td>
+                        <?php
+                            $modalBrand = [
+                                'data-id' => $brand->id,
+                                'data-name' => $brand->name,
+                                'data-description' => $brand->description,
+                                'class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5',
+                                'data-toggle' => 'modal', 
+                                'data-target' => '#editBrandModal',
+                                'escape' => false
+                            ];
+                        ?>
                         <td class="actions text-center">
-                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $brand->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'style' => 'margin-right: 10px;', 'escape' => false]) ?>
-                            <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $brand->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
-                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $brand->id], ['confirm' => __('Are you sure you want to delete # {0}?', $brand->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                            <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $brand->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
+                            <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $brand->id], $modalBrand) ?>
+                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $brand->id], ['confirm' => __('ยืนยันการลบ # {0}?', $brand->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -49,7 +60,7 @@
 </div>
 
 
-<!-- ADD PARTNER -->
+<!-- ADD BRAND -->
 <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 40%;">
         <div class="modal-content">
@@ -79,6 +90,54 @@
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <div class="form-group row">
+                    <div class="col-12 text-center">
+                        <?= $this->Form->button(__('<i class="mdi mdi-content-save"></i> SAVE'), ['class' => 'btn btn-primary btn-custom waves-effect w-md waves-light m-b-5', 'escape' => false]) ?>
+                        <?= $this->Form->button(__('<i class="mdi mdi-close-circle"></i> Cancel'), ['class' => 'btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5', 'data-dismiss' => 'modal', 'escape' => false]) ?>
+                    </div>
+                </div>
+                <?= $this->Form->end() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- EDIT BRAND -->
+<div class="modal fade" id="editBrandModal" tabindex="-1" role="dialog" aria-labelledby="editBrandModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBrandModalLabel">แก้ไขรายการยี่ห้อสินค้า</h5>
+            </div>
+            <div class="modal-body">
+                <?= $this->Form->create('partner', ['url'=>['controller'=>'brands', 'action'=>'edit'], 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'frm_edit']) ?>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-12" style="padding: 20px;">
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Org</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false, 'disabled']); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">ชื่อยี่ห้อสินค้า</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">รายละเอียดเพิ่มเติม</label>
+                                <div class="col-9">
+                                    <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
+                                </div>
+                            </div>
+                            <?php echo $this->Form->control('brandID', ['class' => 'form-control', 'type' => 'hidden', 'label' => false]); ?>
                         </div>
                     </div>
                 </fieldset>
@@ -132,19 +191,13 @@
         table.buttons().container()
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
-        $('#editPartnerModal').on('show.bs.modal', function (e) {
-            var partnerId = $(e.relatedTarget).data('id');
-            var company = $(e.relatedTarget).data('line1');
+        $('#editBrandModal').on('show.bs.modal', function (e) {
+            var brandId = $(e.relatedTarget).data('id');
             var name = $(e.relatedTarget).data('name');
-            var level = $(e.relatedTarget).data('level');
-            var mobile = $(e.relatedTarget).data('mobile');
             var description = $(e.relatedTarget).data('description');
             
-            $(e.currentTarget).find('input[name="partnerID"]').val(partnerId);
-            $('#frm_edit input[name="company"]').val(company);
+            $(e.currentTarget).find('input[name="brandID"]').val(brandId);
             $('#frm_edit input[name="name"]').val(name);
-            $('#frm_edit select[name="level"]').val(level);
-            $('#frm_edit input[name="mobile"]').val(mobile);
             $('#frm_edit textarea[name="description"]').val(description);
         });
     });
