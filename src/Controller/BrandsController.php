@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Brands Controller
@@ -109,6 +110,12 @@ class BrandsController extends AppController
         $brand = $this->Brands->get($id);
         if ($this->Brands->delete($brand)) {
             $this->Flash->success(__('The brand has been deleted.'));
+            $productTable = TableRegistry::get('Products');
+            $products = $productTable->find()->where(['brand_id' => $brand->id])->toArray();
+                foreach($products as $product){
+                    $product->brand_id = $brand->id;
+                    $productTable->delete($product);
+                }
         } else {
             $this->Flash->error(__('The brand could not be deleted. Please, try again.'));
         }

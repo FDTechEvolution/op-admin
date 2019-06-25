@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * ProductCategories Controller
@@ -109,6 +110,12 @@ class ProductCategoriesController extends AppController
         $productCategory = $this->ProductCategories->get($id);
         if ($this->ProductCategories->delete($productCategory)) {
             $this->Flash->success(__('The product category has been deleted.'));
+            $productTable = TableRegistry::get('Products');
+            $products = $productTable->find()->where(['product_category_id' => $productCategory->id])->toArray();
+                foreach($products as $product){
+                    $product->product_category_id = $productCategory->id;
+                    $productTable->delete($product);
+                }
         } else {
             $this->Flash->error(__('The product category could not be deleted. Please, try again.'));
         }

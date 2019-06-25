@@ -31,9 +31,12 @@ class OrgsController extends AppController {
     }
     
     public function dashboard($orgId = null){
-        $this->getRequest()->getSession()->write('Core.golbal.org_id',$orgId);
-        $ORG_ID = $orgId;
-        $this->set(compact('ORG_ID'));
+        if($orgId != 'assets'){
+            $this->getRequest()->getSession()->write('Core.golbal.org_id',$orgId);
+            $ORG_ID = $orgId;
+            $this->set(compact('ORG_ID'));
+        }
+        
     }
 
     /**

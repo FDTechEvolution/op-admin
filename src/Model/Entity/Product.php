@@ -21,7 +21,7 @@ use Cake\ORM\Entity;
  * @property string|null $modifiedby
  *
  * @property \App\Model\Entity\Org $org
- * @property \App\Model\Entity\PeoductCategory $peoduct_category
+ * @property \App\Model\Entity\ProductCategory $product_category
  * @property \App\Model\Entity\Brand $brand
  */
 class Product extends Entity
@@ -50,7 +50,7 @@ class Product extends Entity
         'createdby' => true,
         'modifiedby' => true,
         'org' => true,
-        'peoduct_category' => true,
+        'product_category' => true,
         'brand' => true
     ];
 }

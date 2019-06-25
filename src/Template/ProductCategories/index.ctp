@@ -49,7 +49,7 @@
                         <td class="actions text-center">
                             <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $productCategory->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                             <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $productCategory->id], $modalCate) ?>
-                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $productCategory->id], ['confirm' => __('ยืนยันการลบ # {0}?', $productCategory->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $productCategory->id], ['confirm' => __('โปรดตรวจสอบ!!...รายการสินค้าที่อยู่ในหมวดหมู่นี้ทั้งหมดจะถูกลบไปด้วย\n ยืนยันการลบ # {0}?', $productCategory->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -73,12 +73,6 @@
                     <div class="row">
                         <div class="col-12" style="padding: 20px;">
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Org</label>
-                                <div class="col-9">
-                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false]); ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-3 col-form-label">ชื่อหมวดหมู่สินค้า</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
@@ -90,6 +84,7 @@
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
+                            <?php echo $this->Form->control('org_id', ['class' => 'form-control', 'type' => 'hidden', 'value' => $ORG_ID, 'label' => false]); ?>
                         </div>
                     </div>
                 </fieldset>
@@ -119,12 +114,6 @@
                 <fieldset>
                     <div class="row">
                         <div class="col-12" style="padding: 20px;">
-                            <div class="form-group row">
-                                <label class="col-3 col-form-label">Org</label>
-                                <div class="col-9">
-                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false, 'disabled']); ?>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label class="col-3 col-form-label">ชื่อหมวดหมู่สินค้า</label>
                                 <div class="col-9">

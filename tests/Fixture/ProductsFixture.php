@@ -49,19 +49,19 @@ class ProductsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '7b940d89-c922-4762-a26e-58cb05d7f5ea',
-                'org_id' => '3509b888-2f00-4025-b923-7e14a67c0d20',
-                'product_category_id' => '53ae7eb4-9493-4de1-ab94-041a1e7391c9',
+                'id' => 'ab38291e-6933-4e84-b549-fd162ae7bdd4',
+                'org_id' => '728c0355-1e63-4aa3-a3ea-150a9020d998',
+                'product_category_id' => '1ccfafa1-a788-40d0-bbf4-091ac3a28190',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'code' => 'Lorem ipsum dolor sit amet',
                 'cost' => 1.5,
                 'price' => 1.5,
-                'brand_id' => 'fa028a5f-1b58-4dc3-ad83-41051782baa2',
+                'brand_id' => 'dd27f2e0-227f-478b-9a7f-d405ffc639de',
                 'description' => 'Lorem ipsum dolor sit amet',
-                'created' => '2019-06-21 16:34:14',
-                'modified' => '2019-06-21 16:34:14',
-                'createdby' => '2472cba5-3b96-4ba9-9e50-2f240fb51962',
-                'modifiedby' => 'ac913a37-1cbe-40e1-a2a3-f63e7aaef1eb'
+                'created' => '2019-06-25 11:41:44',
+                'modified' => '2019-06-25 11:41:44',
+                'createdby' => 'f6a4b298-665a-4991-ab8e-d21cef268e5b',
+                'modifiedby' => 'b7da7b4f-23a3-45ce-b1ec-3398b047b2a1'
             ],
         ];
         parent::init();

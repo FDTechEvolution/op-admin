@@ -23,13 +23,13 @@
             <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col"><?= $this->Paginator->sort('org_id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('หมวดหมู่') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('ยี่ห้อ') ?></th>
+                        <th scope="col"><?= __('org') ?></th>
+                        <th scope="col"><?= __('หมวดหมู่') ?></th>
+                        <th scope="col"><?= __('ยี่ห้อ') ?></th>
                         <th scope="col"><?= __('ชื่อสินค้า') ?></th>
                         <th scope="col" class="text-center"><?= __('รหัสสินค้า') ?></th>
-                        <th scope="col" class="text-center"><?= $this->Paginator->sort('ต้นทุน (฿)') ?></th>
-                        <th scope="col" class="text-center"><?= $this->Paginator->sort('ราคาขาย (฿)') ?></th>
+                        <th scope="col" class="text-center"><?= __('ราคาต้นทุน (฿)') ?></th>
+                        <th scope="col" class="text-center"><?= __('ราคาขาย (฿)') ?></th>
                         <th scope="col" class="actions text-center"><?= __('การจัดการ') ?></th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
                         <td class="actions text-center">
                             <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $product->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                             <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $product->id], $modalProduct) ?>
-                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                            <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $product->id], ['confirm' => __('ยืนยันการลบสินค้า # {0}?', $product->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -71,7 +71,7 @@
 </div>
 
 
-<!-- ADD PARTNER -->
+<!-- ADD PRODUCT -->
 <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 45%;">
         <div class="modal-content">
@@ -84,19 +84,13 @@
                     <div class="row">
                         <div class="col-12" style="padding: 20px;">
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Org</label>
-                                <div class="col-9">
-                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false]); ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-3 col-form-label">หมวดหมู่</label>
+                                <label class="col-3 col-form-label">หมวดหมู่สินค้า</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('product_category_id', ['options' => $product_categories, 'class' => 'form-control select2', 'label' => false]); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">ยี่ห้อ</label>
+                                <label class="col-3 col-form-label">ยี่ห้อสินค้า</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('brand_id', ['options' => $brands, 'class' => 'form-control select2', 'label' => false]); ?>
                                 </div>
@@ -131,6 +125,7 @@
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
+                            <?php echo $this->Form->control('org_id', ['type' => 'hidden', 'value' => $ORG_ID, 'label' => false]); ?>
                         </div>
                     </div>
                 </fieldset>
@@ -148,24 +143,18 @@
 </div>
 
 
-<!-- ADD PARTNER -->
+<!-- EDIT PRODUCT -->
 <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 45%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editProductModalLabel">เพิ่มรายการสินค้า</h5>
+                <h5 class="modal-title" id="editProductModalLabel">แก้ไขรายการสินค้า</h5>
             </div>
             <div class="modal-body">
-                <?= $this->Form->create('product', ['url'=>['controller'=>'products', 'action'=>'add'], 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'frm_edit']) ?>
+                <?= $this->Form->create('product', ['url'=>['controller'=>'products', 'action'=>'edit'], 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'frm_edit']) ?>
                 <fieldset>
                     <div class="row">
                         <div class="col-12" style="padding: 20px;">
-                            <div class="form-group row">
-                                <label class="col-3 col-form-label">Org</label>
-                                <div class="col-9">
-                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false]); ?>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label class="col-3 col-form-label">หมวดหมู่</label>
                                 <div class="col-9">

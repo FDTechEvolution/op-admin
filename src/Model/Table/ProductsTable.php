@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * Products Model
  *
  * @property \App\Model\Table\OrgsTable|\Cake\ORM\Association\BelongsTo $Orgs
- * @property |\Cake\ORM\Association\BelongsTo $ProductCategories
+ * @property \App\Model\Table\ProductCategoriesTable|\Cake\ORM\Association\BelongsTo $ProductCategories
  * @property \App\Model\Table\BrandsTable|\Cake\ORM\Association\BelongsTo $Brands
  *
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])

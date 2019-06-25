@@ -43,7 +43,11 @@
                         <th scope="row"><?= __('รายละเอียด') ?></th>
                     </tr>
                     <tr>
-                        <td style="padding-left: 20px;"><?= h($brand->description) ?></td>
+                        <?php if($brand->description != "") : ?>
+                            <td style="padding-left: 20px;"><?= h($brand->description) ?></td>
+                        <?php else : ?>
+                            <td style="padding-left: 20px;">ไม่มีรายละเอียดใดๆเกี่ยวกับยี่ห้อนี้.....</td>
+                        <?php endif; ?>
                     </tr>
                 </table>
             </div>
@@ -58,26 +62,24 @@
                 <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col"><?= __('หมวดหมู่') ?></th>
                             <th scope="col"><?= __('ชื่อสินค้า') ?></th>
-                            <th scope="col"><?= __('รหัสสินค้า') ?></th>
-                            <th scope="col"><?= __('ต้นทุน (฿)') ?></th>
-                            <th scope="col"><?= __('ราคาขาย (฿)') ?></th>
+                            <th scope="col" class="text-center"><?= __('รหัสสินค้า') ?></th>
+                            <th scope="col" class="text-center"><?= __('ต้นทุน (฿)') ?></th>
+                            <th scope="col" class="text-center"><?= __('ราคาขาย (฿)') ?></th>
                             <th scope="col" class="actions text-center"><?= __('การจัดการ') ?></th>
                         </tr>
                     <thead>
                     <tbody>
                         <?php foreach ($brand->products as $products): ?>
                         <tr>
-                            <td><?= h($products->product_category_id) ?></td>
                             <td><?= h($products->name) ?></td>
-                            <td><?= h($products->code) ?></td>
-                            <td><?= h($products->cost) ?></td>
-                            <td><?= h($products->price) ?></td>
+                            <td class="text-center"><?= h($products->code) ?></td>
+                            <td class="text-center"><?= h($products->cost) ?></td>
+                            <td class="text-center"><?= h($products->price) ?></td>
                             <td class="actions text-center">
                                 <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['controller' => 'Products', 'action' => 'view', $products->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                                 <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['controller' => 'Products', 'action' => 'edit', $products->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
+                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('ยืนยันที่จะลบสินค้า # {0}?', $products->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

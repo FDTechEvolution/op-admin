@@ -4,73 +4,72 @@
  * @var \App\Model\Entity\Product $product
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Product'), ['action' => 'edit', $product->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Product'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Orgs'), ['controller' => 'Orgs', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Org'), ['controller' => 'Orgs', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Brands'), ['controller' => 'Brands', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Brand'), ['controller' => 'Brands', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="products view large-9 medium-8 columns content">
-    <h3><?= h($product->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= h($product->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Org') ?></th>
-            <td><?= $product->has('org') ? $this->Html->link($product->org->name, ['controller' => 'Orgs', 'action' => 'view', $product->org->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Product Category Id') ?></th>
-            <td><?= h($product->product_category_id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($product->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Code') ?></th>
-            <td><?= h($product->code) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Brand') ?></th>
-            <td><?= $product->has('brand') ? $this->Html->link($product->brand->name, ['controller' => 'Brands', 'action' => 'view', $product->brand->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Description') ?></th>
-            <td><?= h($product->description) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Createdby') ?></th>
-            <td><?= h($product->createdby) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modifiedby') ?></th>
-            <td><?= h($product->modifiedby) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Cost') ?></th>
-            <td><?= $this->Number->format($product->cost) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Price') ?></th>
-            <td><?= $this->Number->format($product->price) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($product->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($product->modified) ?></td>
-        </tr>
-    </table>
+<style>
+    table.brand-table tbody tr {
+        line-height: 30px;
+    }
+</style>
+<div class="brands view large-9 medium-8 columns content">
+    <div class="card-box">
+        <div class="row" style="display: -webkit-box;">
+            <h3>รายละเอียดสินค้า <?= h($product->name) ?></h3>
+            <?= $this->Html->link(__('<i class="ti-arrow-circle-left"></i> สินค้าทั้งหมด'), ['action' => 'index'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'style'=>'margin-left: 20px;', 'escape' => false]) ?>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-5">
+                <table class="brand-table" style="margin-left: 20px;">
+                    <tr>
+                        <th style="width: 170px;" scope="row"><?= __('Org') ?></th>
+                        <td><?= $product->has('org') ? $this->Html->link($product->org->name, ['controller' => 'Orgs', 'action' => 'view', $product->org->id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('หมวดหมู่สินค้า') ?></th>
+                        <td><?= $product->has('product_category') ? $this->Html->link($product->product_category->name, ['controller' => 'ProductCategories', 'action' => 'view', $product->product_category->name]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('ยี่ห้อสินค้า') ?></th>
+                        <td><?= $product->has('brand') ? $this->Html->link($product->brand->name, ['controller' => 'Brands', 'action' => 'view', $product->brand->id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('ชื่อสินค้า') ?></th>
+                        <td><?= h($product->name) ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('รหัสสินค้า') ?></th>
+                        <td><?= h($product->code) ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('ราคาต้นทุน') ?></th>
+                        <td><?= $this->Number->format($product->cost) ?>฿</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('ราคาขาย') ?></th>
+                        <td><?= $this->Number->format($product->price) ?>฿</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('เพิ่มสินค้าโดย') ?></th>
+                        <td><?= h($product->createdby) ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?= __('ปรับปรุงสินค้าโดย') ?></th>
+                        <td><?= h($product->modifiedby) ?></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6">
+                <table>
+                    <tr>
+                        <th scope="row"><?= __('รายละเอียดสินค้า') ?></th>
+                    </tr>
+                    <tr>
+                        <?php if($product->description != ""): ?>
+                            <td style="padding-left: 20px;"><?= h($product->description) ?></td>
+                        <?php else : ?>
+                            <td style="padding-left: 20px;">ไม่มีรายละเอียดใดๆเกี่ยวกับสินค้า......</td>
+                        <?php endif; ?>
+                    </tr>
+                </table>
+        </div>
+    </div>
 </div>

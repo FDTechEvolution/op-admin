@@ -74,7 +74,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $orgs = $this->Products->Orgs->find('list', ['limit' => 200]);
-        $peoductCategories = $this->Products->PeoductCategories->find('list', ['limit' => 200]);
+        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
         $brands = $this->Products->Brands->find('list', ['limit' => 200]);
         $this->set(compact('product', 'orgs', 'productCategories', 'brands'));
     }
@@ -86,13 +86,15 @@ class ProductsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
+        $postData = $this->request->getData();
+        $id = $postData['productID'];
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product = $this->Products->patchEntity($product, $postData);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 

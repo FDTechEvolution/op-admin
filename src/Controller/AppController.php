@@ -71,7 +71,7 @@ class AppController extends Controller {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
         
-        $ORG_ID = $this->getRequest()->getSession()->read('Core.golbal.org_id');
+        $ORG_ID = $this->request->getSession()->read('Core.golbal.org_id');
         //$this->log($ORG_ID,'debug');
         $this->set(compact('ORG_ID'));
     }
