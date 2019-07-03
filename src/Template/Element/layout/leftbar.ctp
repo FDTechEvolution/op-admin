@@ -35,6 +35,21 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ion-arrow-swap"></i> <span style="font-size: 14px;"> WH Management </span>
+                            <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <?= $this->Html->link('- Goods Shipment </span>', ['controller' => 'warehouses'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                            <li>
+                                <?= $this->Html->link('- Goods Recieve </span>', ['controller' => 'shipmentInouts'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                            <li>
+                                <?= $this->Html->link('- Warehouse </span>', ['controller' => 'warehouses'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                        </ul>
+                    </li>
                 <?php } ?>
 
                 <li class="has_sub">

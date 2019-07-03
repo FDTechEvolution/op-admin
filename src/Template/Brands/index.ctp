@@ -73,12 +73,6 @@
                     <div class="row">
                         <div class="col-12" style="padding: 20px;">
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Org</label>
-                                <div class="col-9">
-                                    <?php echo $this->Form->control('org_id', ['options' => $orgs, 'class' => 'form-control select2', 'label' => false]); ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-3 col-form-label">ชื่อยี่ห้อสินค้า</label>
                                 <div class="col-9">
                                     <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
@@ -90,6 +84,7 @@
                                     <?php echo $this->Form->textarea('description', ['class' => 'form-control', 'label' => false]); ?>
                                 </div>
                             </div>
+                            <?php echo $this->Form->control('org_id', ['type' => 'hidden', 'value' => $ORG_ID]); ?>
                         </div>
                     </div>
                 </fieldset>

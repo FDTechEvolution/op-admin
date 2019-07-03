@@ -30,4 +30,15 @@ class UsersCompComponent extends Component
             return false;
         }
     }
+
+    public function UsersList(){
+        $ORG_ID = $this->request->getSession()->read('Core.golbal.org_id');
+
+        $this->Users = TableRegistry::get('Users');
+        $query = $this->Users->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name'
+        ])->where(['org_id' => $ORG_ID]);
+        return $data = $query->toArray();
+    }
 }
