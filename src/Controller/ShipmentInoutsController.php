@@ -108,6 +108,10 @@ class ShipmentInoutsController extends AppController
         $users = $this->ShipmentInouts->Users->find('list', ['limit' => 200]);
         $bpartners = $this->ShipmentInouts->Bpartners->find('list', ['limit' => 200]);
         $this->set(compact('shipmentInout', 'orgs', 'fromWarehouses', 'toWarehouses', 'users', 'bpartners'));
+
+        $this->loadComponent('ProductsComp');
+        $products = $this->ProductsComp->productsList();
+        $this->set(compact('shipmentInout', 'products'));
     }
 
     /**

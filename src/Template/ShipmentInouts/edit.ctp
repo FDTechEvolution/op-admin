@@ -76,10 +76,10 @@
                 <div class="row">
                     <label class="col-12 col-form-label text-center"><strong>การจัดการ</strong></label>
                     <div class="col-6 text-center">
-                        <button class='btn btn-primary disabled m-b-5'><i class='mdi mdi-content-save-settings'></i> บันทึก</button>
+                        <button class='btn btn-primary btn-block m-b-5'><i class='mdi mdi-content-save-settings'></i> บันทึก</button>
                     </div>
                     <div class="col-6 text-center">
-                        <button class='btn btn-danger disabled m-b-5'><i class='mdi mdi-window-close'></i> ละทิ้ง</button>
+                        <button class='btn btn-danger btn-block m-b-5'><i class='mdi mdi-window-close'></i> ละทิ้ง</button>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,61 @@
     </div>
     <div class="card-box">
         <div class="row" style="display: -webkit-box;">
-            <h3>เพิ่มรายการสินค้า</h3>
+            <h3>รายการสินค้า</h3> <button class='btn btn-primary m-b-5' onclick="cloneRow()" style="margin-left: 20px;"><i class='mdi mdi-plus-circle'></i> เพิ่มรายการสินค้า</button>
         </div>
+        <hr>
+        <table style="width: 70%;">
+            <tbody id="tableToModify">
+                <tr id="rowToClone">
+                    <td style="width: 5%;">
+                        <strong style="vertical-align: middle;">สินค้า</strong>
+                    </td>
+                    <td style="width: 20%;">
+                        <?php echo $this->Form->control('product_id[]', ['options' => $products, 'class' => 'form-control select2', 'label' => false]); ?>
+                    </td>
+                    <td class="text-center" style="width: 5%;">
+                        <strong style="vertical-align: middle;">จำนวน</strong>
+                    </td>
+                    <td class="text-center" style="width: 10%;">
+                        <?php echo $this->Form->control('qty[]', ['class' => 'form-control text-center', 'type' => 'number', 'label' => false]); ?>
+                    </td>
+                    <td class="text-center" style="width: 10%;">
+                        <button class='btn btn-danger m-b-5'> <i class='mdi mdi-window-close'></i> </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+
+
+<!--FooTable-->
+<?= $this->html->script("/plugins/footable/js/footable.all.min.js") ?>
+<!--FooTable Example-->
+<?= $this->html->script("Shipment-jquery.footable.js") ?>
+
+<?= $this->html->script("/plugins/switchery/switchery.min.js") ?>
+
+<!-- Examples -->
+<?= $this->html->script("/plugins/magnific-popup/dist/jquery.magnific-popup.min.js") ?>
+<?= $this->html->script("/plugins/datatables/jquery.dataTables.min.js") ?>
+<?= $this->html->script("/plugins/datatables/dataTables.bootstrap4.min.js") ?>
+<?= $this->html->script("/plugins/tiny-editable/mindmup-editabletable.js") ?>
+<?= $this->html->script("/plugins/tiny-editable/numeric-input-example.js") ?>
+
+<?= $this->html->script("Shipment-datatables.editable.init.js") ?>
+
+<?= $this->html->script("jquery.core.js") ?>
+<?= $this->html->script("jquery.app.js") ?>
+
+<script>
+    $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+
+    function cloneRow() {
+      var row = document.getElementById("rowToClone"); // find row to copy
+      var table = document.getElementById("tableToModify"); // find table to append to
+      var clone = row.cloneNode(true); // copy children too
+      clone.id = "newID"; // change id or other attributes/contents
+      table.appendChild(clone); // add new row to end of table
+    }
+</script>        
