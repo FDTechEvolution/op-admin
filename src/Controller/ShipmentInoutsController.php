@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * ShipmentInouts Controller
@@ -79,6 +80,17 @@ class ShipmentInoutsController extends AppController
         $users = $this->ShipmentInouts->Users->find('list', ['limit' => 200]);
         $bpartners = $this->ShipmentInouts->Bpartners->find('list', ['limit' => 200]);
         $this->set(compact('shipmentInout', 'orgs', 'fromWarehouses', 'toWarehouses', 'users', 'bpartners'));
+    }
+
+    public function addShipment(){
+        $SMinOut = TableRegistry::get('shipment_inout_lines');
+        $shipmentLine = $SMinOut->newEntity();
+        if ($this->request->is('post')) {
+            $shipmentInoutLine = $SMinOut->patchEntities($shipmentLine, $this->request->getData());
+            if($SMinOut->save($shipmentInoutLine)){
+                return $this->redirect(['action' => 'index']);
+            }
+        }
     }
 
     /**

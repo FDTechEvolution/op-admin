@@ -62,24 +62,17 @@
             <div class="col-3" style="border-radius: 5px; border: 1px solid #ddd; padding: 20px;">
                 <div class="row">
                     <label class="col-12 col-form-label text-center"><strong>สถานะรายการรับสินค้า</strong></label>
-                    <div class="col-12 text-center">
-                        <?php if(h($shipmentInout->status) == "DR") :
-                            echo "<button class='btn btn-success disabled m-b-5'><i class='mdi mdi-selection'></i> Draft</button>";
-                        elseif(h($shipmentInout->status) == "CO") :
-                            echo "<button class='btn btn-primary disabled m-b-5'><i class='mdi mdi-content-save-settings'></i> Complete</button>";
-                        elseif(h($shipmentInout->status) == "VO") :
-                            echo "<button class='btn btn-danger disabled m-b-5'><i class='mdi mdi-window-close'></i> Void</button>";
-                        endif; ?>
-                    </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <label class="col-12 col-form-label text-center"><strong>การจัดการ</strong></label>
-                    <div class="col-6 text-center">
-                        <button class='btn btn-primary btn-block m-b-5'><i class='mdi mdi-content-save-settings'></i> บันทึก</button>
-                    </div>
-                    <div class="col-6 text-center">
-                        <button class='btn btn-danger btn-block m-b-5'><i class='mdi mdi-window-close'></i> ละทิ้ง</button>
+                    <div class="col-12 text-center">
+                        <?php if(h($shipmentInout->status) == "DR") :
+                            echo "<button class='btn btn-success disabled m-b-5' style='width: 60%;'><i class='mdi mdi-selection'></i> Draft</button>";
+                        elseif(h($shipmentInout->status) == "CO") :
+                            echo "<button class='btn btn-primary disabled m-b-5' style='width: 60%;'><i class='mdi mdi-content-save-settings'></i> Complete</button>";
+                        elseif(h($shipmentInout->status) == "VO") :
+                            echo "<button class='btn btn-danger disabled m-b-5' style='width: 60%;'><i class='mdi mdi-window-close'></i> Void</button>";
+                        endif; ?>
                     </div>
                 </div>
             </div>
@@ -87,30 +80,44 @@
     </div>
     <div class="card-box">
         <div class="row" style="display: -webkit-box;">
-            <h3>รายการสินค้า</h3> <button class='btn btn-primary m-b-5' onclick="cloneRow()" style="margin-left: 20px;"><i class='mdi mdi-plus-circle'></i> เพิ่มรายการสินค้า</button>
+            <h3>รายการสินค้า</h3>
+            <button class='btn btn-primary m-b-5' onclick="cloneRow()" style="margin-left: 20px;"><i class='mdi mdi-plus-circle'></i> เพิ่มรายการสินค้า</button>
+            <button class='btn btn-danger m-b-5' id="delRow[]" onclick="delRow()"><i class='mdi mdi-window-close'></i> ลบรายการสินค้า</button>
         </div>
         <hr>
-        <table style="width: 70%;">
-            <tbody id="tableToModify">
-                <tr id="rowToClone">
-                    <td style="width: 5%;">
-                        <strong style="vertical-align: middle;">สินค้า</strong>
-                    </td>
-                    <td style="width: 20%;">
-                        <?php echo $this->Form->control('product_id[]', ['options' => $products, 'class' => 'form-control select2', 'label' => false]); ?>
-                    </td>
-                    <td class="text-center" style="width: 5%;">
-                        <strong style="vertical-align: middle;">จำนวน</strong>
-                    </td>
-                    <td class="text-center" style="width: 10%;">
-                        <?php echo $this->Form->control('qty[]', ['class' => 'form-control text-center', 'type' => 'number', 'label' => false]); ?>
-                    </td>
-                    <td class="text-center" style="width: 10%;">
-                        <button class='btn btn-danger m-b-5'> <i class='mdi mdi-window-close'></i> </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <?= $this->Form->create('shipment', ['url' => ['controller' => 'shipmentInouts', 'action' => 'addShipment'], 'class' => 'form-horizontal', 'role' => 'form']); ?>
+            <table id="productTable" style="width: 70%;">
+                <tbody id="tableToModify">
+                    <tr id="rowToClone" style="margin-bottom: 20px;">
+                        <td style="width: 5%;">
+                            <strong style="vertical-align: middle;">สินค้า</strong>
+                        </td>
+                        <td style="width: 20%;">
+                            <?php echo $this->Form->control('product_id[]', ['options' => $products, 'class' => 'form-control select2', 'label' => false]); ?>
+                        </td>
+                        <td class="text-center" style="width: 5%;">
+                            <strong style="vertical-align: middle;">จำนวน</strong>
+                        </td>
+                        <td class="text-center" style="width: 10%;">
+                            <?php echo $this->Form->control('qty[]', ['class' => 'form-control text-center', 'type' => 'number', 'label' => false]); ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php echo $this->Form->control('sipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-2 text-center">
+                    <?= $this->Form->button(__('<i class="mdi mdi-content-save-settings"></i> บันทึก'), ['class' => 'btn btn-primary btn-block m-b-5', 'escape' => false]) ?>
+                </div>
+                <div class="col-2 text-center">
+                    <?= $this->Form->button(__('<i class="mdi mdi-window-close"></i> ละทิ้ง'), ['class' => 'btn btn-danger btn-block m-b-5', 'escape' => false]) ?>
+                </div>
+            </div>
+        <?= $this->Form->end() ?>
     </div>
 </div>
 
@@ -143,5 +150,8 @@
       var clone = row.cloneNode(true); // copy children too
       clone.id = "newID"; // change id or other attributes/contents
       table.appendChild(clone); // add new row to end of table
+    }
+    function delRow() {
+        document.getElementById("newID").remove();
     }
 </script>        
