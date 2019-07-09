@@ -83,10 +83,11 @@ class ShipmentInoutsController extends AppController
     }
 
     public function addShipment(){
+        $postData = $this->request->getData();
         $SMinOut = TableRegistry::get('shipment_inout_lines');
-        $shipmentLine = $SMinOut->newEntity();
+        $shipmentInoutLine = $SMinOut->newEntity();
         if ($this->request->is('post')) {
-            $shipmentInoutLine = $SMinOut->patchEntities($shipmentLine, $this->request->getData());
+            $shipmentInoutLine = $SMinOut->patchEntity($shipmentInoutLine, $postData);
             if($SMinOut->save($shipmentInoutLine)){
                 return $this->redirect(['action' => 'index']);
             }

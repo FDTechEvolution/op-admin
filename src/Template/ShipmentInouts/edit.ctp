@@ -104,7 +104,7 @@
                     </tr>
                 </tbody>
             </table>
-            <?php echo $this->Form->control('sipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
+            <?php echo $this->Form->control('shipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
             <br>
             <hr>
             <br>
