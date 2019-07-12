@@ -67,35 +67,27 @@
         <div class="related">
             <h4><?= __('ราการสินค้าที่อยู่ในคลังสินค้านี้') ?></h4>
             <hr>
-            <?php if (!empty($warehouse->warehouseLines)): ?>
             <div class="row">
                 <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th scope="col"><?= __('ชื่อสินค้า') ?></th>
-                            <th scope="col" class="text-center"><?= __('รหัสสินค้า') ?></th>
                             <th scope="col" class="text-center"><?= __('ต้นทุน (฿)') ?></th>
                             <th scope="col" class="text-center"><?= __('ราคาขาย (฿)') ?></th>
-                            <th scope="col" class="actions text-center"><?= __('การจัดการ') ?></th>
+                            <th scope="col" class="text-center"><?= __('จำนวน') ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($warehouse->warehouseLines as $products): ?>
+                        <?php foreach ($warehouseLine as $productLine): ?>
                         <tr>
-                            <td><?= h($products->name) ?></td>
-                            <td class="text-center"><?= h($products->code) ?></td>
-                            <td class="text-center"><?= h($products->cost) ?></td>
-                            <td class="text-center"><?= h($products->price) ?></td>
-                            <td class="actions text-center">
-                                <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['controller' => 'Products', 'action' => 'view', $products->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
-                                <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['controller' => 'Products', 'action' => 'edit', $products->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
-                                <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('ยืนยันที่จะลบสินค้า # {0}?', $products->name), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
-                            </td>
+                            <td class="text-center"><?= $productLine->has('product') ? $this->Html->link($productLine->product->name, ['controller' => 'Products', 'action' => 'view', $productLine->product->id]) : '' ?></td>
+                            <td class="text-center"><?= $productLine->has('product') ? $productLine->product->cost : '' ?></td>
+                            <td class="text-center"><?= $productLine->has('product') ? $productLine->product->price : '' ?></td>
+                            <td class="text-center"><?= $productLine->qty; ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            <?php endif; ?>
         </div>
     </div>
 </div>

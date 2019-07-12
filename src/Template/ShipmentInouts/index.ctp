@@ -39,7 +39,7 @@
                         <td class="text-center"><?= $shipmentInout->has('bpartner') ? $this->Html->link($shipmentInout->bpartner->name, ['controller' => 'Bpartners', 'action' => 'view', $shipmentInout->bpartner->id]) : '' ?></td>
                         <td class="text-center"><?= $shipmentInout->has('user') ? $this->Html->link($shipmentInout->user->name, ['controller' => 'Users', 'action' => 'view', $shipmentInout->user->id]) : '' ?></td>
                         <td class="text-center">
-                            <?php if(h($shipmentInout->status) == "DR") :
+                            <?php if(h($shipmentInout->status) == "DR" || h($shipmentInout->status) == "DX") :
                                 echo "<button class='btn btn-success disabled m-b-5'><i class='mdi mdi-selection'></i> Draft</button>";
                             elseif(h($shipmentInout->status) == "CO") :
                                 echo "<button class='btn btn-primary disabled m-b-5'><i class='mdi mdi-content-save-settings'></i> Complete</button>";
@@ -48,11 +48,11 @@
                             endif; ?>
                         </td>
                         <td class="actions text-center">
-                            <?php if(h($shipmentInout->status) == "DR") : ?>
+                            <?php if(h($shipmentInout->status) == "DR" || h($shipmentInout->status) == "DX") : ?>
                                 <?= $this->Html->link(__('<i class="mdi mdi-tooltip-edit"></i> แก้ไข'), ['action' => 'edit', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-success m-b-5', 'escape' => false]) ?>
                                 <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $shipmentInout->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shipmentInout->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             <?php elseif(h($shipmentInout->status) == "CO") : ?>
-                                <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
+                                <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'edit', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                                 <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $shipmentInout->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shipmentInout->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             <?php elseif(h($shipmentInout->status) == "VO") : ?>
                                 <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
@@ -98,7 +98,7 @@
                             <div class="form-group row">
                                 <label class="col-12 col-form-label">วันที่</label>
                                 <div class="col-12">
-                                    <?php echo $this->Form->control('docdate', ['class'=>'form-control', 'label'=>false, 'value' => date('m-d-y'), 'disabled']); ?>
+                                    <?php echo $this->Form->control('docdate', ['class'=>'form-control', 'label'=>false, 'value' => date('Y-m-d'), 'readonly']); ?>
                                 </div>
                             </div>
                         </div>

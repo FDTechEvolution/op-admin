@@ -63,10 +63,9 @@
                 <div class="row">
                     <label class="col-12 col-form-label text-center"><strong>สถานะรายการรับสินค้า</strong></label>
                 </div>
-                <hr>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <?php if(h($shipmentInout->status) == "DR") :
+                        <?php if(h($shipmentInout->status) == "DR" || h($shipmentInout->status) == "DX") :
                             echo "<button class='btn btn-success disabled m-b-5' style='width: 60%;'><i class='mdi mdi-selection'></i> Draft</button>";
                         elseif(h($shipmentInout->status) == "CO") :
                             echo "<button class='btn btn-primary disabled m-b-5' style='width: 60%;'><i class='mdi mdi-content-save-settings'></i> Complete</button>";
@@ -75,48 +74,91 @@
                         endif; ?>
                     </div>
                 </div>
+                <hr>
+                <?php if($shipmentInout->status == "DR" || $shipmentInout->status == "DX") : ?>
+                    <div class="row">
+                        <div class="col-12 text-center" style="padding-bottom: 0.3em;"><strong>การจัดการคลังสินค้า</strong></div>
+                        <div class="col-6 text-center">
+                            <?= $this->Form->create('shipmentConfirm' , ['url' => ['controller' => 'shipmentInouts', 'action' => 'addtowarehouse'], 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                                <?php if(h($shipmentInout->status) == "DR") : ?>
+                                    <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> นำเข้าสินค้า'), ['class' => 'btn btn-secondary btn-block disabled m-b-5', 'type' => 'button', 'escape' => false]) ?>
+                                <?php elseif(h($shipmentInout->status) == "DX") : ?>
+                                    <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> นำเข้าสินค้า'), ['class' => 'btn btn-primary btn-block m-b-5', 'style' => 'cursor: pointer;', 'escape' => false]) ?>
+                                <?php endif; ?>
+                                <?php echo $this->Form->control('shipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
+                            <?= $this->Form->end() ?>
+                        </div>
+                        <div class="col-6 text-center">
+                            <?= $this->Form->create('shipmentConfirm' , ['url' => ['controller' => 'shipmentInouts', 'action' => 'endofwarehouse'], 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                                <?= $this->Form->button(__('<i class="mdi mdi-window-close"></i> ละทิ้ง'), ['confirm' => __('ยืนยันการยกเลิกรายการนี้ทั้งหมด ?'), 'class' => 'btn btn-danger btn-block m-b-5', 'style' => 'cursor: pointer;', 'escape' => false]) ?>
+                                <?php echo $this->Form->control('shipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
+                            <?= $this->Form->end() ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
     <div class="card-box">
         <div class="row" style="display: -webkit-box;">
-            <h3>รายการสินค้า</h3>
-            <button class='btn btn-primary m-b-5' onclick="cloneRow()" style="margin-left: 20px;"><i class='mdi mdi-plus-circle'></i> เพิ่มรายการสินค้า</button>
-            <button class='btn btn-danger m-b-5' id="delRow[]" onclick="delRow()"><i class='mdi mdi-window-close'></i> ลบรายการสินค้า</button>
+            <h3 style="margin-right: 20px;">รายการสินค้า</h3>
+            <?php if($shipmentInout->status == "DR" || $shipmentInout->status == "DX") : ?>
+                <button class='btn btn-primary m-b-5' style="cursor: pointer;" onclick="cloneRow()" style="margin-left: 20px;"><i class='mdi mdi-plus-circle'></i> เพิ่มรายการสินค้า</button>
+                <button class='btn btn-danger m-b-5' style="cursor: pointer;" id="delRow[]" onclick="delRow()"><i class='mdi mdi-window-close'></i> ลบรายการสินค้า</button>
+            <?php endif; ?>
         </div>
         <hr>
         <?= $this->Form->create('shipment', ['url' => ['controller' => 'shipmentInouts', 'action' => 'addShipment'], 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <table id="productTable" style="width: 70%;">
                 <tbody id="tableToModify">
-                    <tr id="rowToClone" style="margin-bottom: 20px;">
-                        <td style="width: 5%;">
-                            <strong style="vertical-align: middle;">สินค้า</strong>
-                        </td>
-                        <td style="width: 20%;">
-                            <?php echo $this->Form->control('product_id[]', ['options' => $products, 'class' => 'form-control select2', 'label' => false]); ?>
-                        </td>
-                        <td class="text-center" style="width: 5%;">
-                            <strong style="vertical-align: middle;">จำนวน</strong>
-                        </td>
-                        <td class="text-center" style="width: 10%;">
-                            <?php echo $this->Form->control('qty[]', ['class' => 'form-control text-center', 'type' => 'number', 'label' => false]); ?>
-                        </td>
-                    </tr>
+                    <?php
+                    foreach($SMproducts as $SMproduct) : ?>
+                        <tr id="rowData" style="margin-bottom: 20px;">
+                            <td style="width: 5%;">
+                                <strong style="vertical-align: middle;">สินค้า</strong>
+                            </td>
+                            <td style="width: 20%;">
+                                <?php echo $this->Form->control('products[].product_id', ['options' => $products, 'class' => 'form-control select2', 'label' => false, 'val' => $SMproduct->product_id, 'disabled'=>(in_array($shipmentInout->status,['CO','VO'])?true:false)]); ?>
+                            </td>
+                            <td class="text-center" style="width: 5%;">
+                                <strong style="vertical-align: middle;">จำนวน</strong>
+                            </td>
+                            <td class="text-center" style="width: 10%;">
+                                <?php echo $this->Form->control('qtys[].qty', ['class' => 'form-control text-center', 'type' => 'number', 'value' => $SMproduct->qty, 'label' => false, 'disabled'=>(in_array($shipmentInout->status,['CO','VO'])?true:false)]); ?>
+                            </td>
+                            <?php echo $this->Form->control('SMids[].SMid', ['type' => 'hidden', 'value' => $SMproduct->id]); ?>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php if($shipmentInout->status == "DR" || $shipmentInout->status == "DX") : ?>
+                        <tr id="rowToClone" style="margin-bottom: 20px;">
+                            <td style="width: 5%;">
+                                <strong style="vertical-align: middle;">สินค้า</strong>
+                            </td>
+                            <td style="width: 20%;">
+                                <?php echo $this->Form->control('products[].product_id', ['options' => $products, 'class' => 'form-control select2', 'label' => false]); ?>
+                            </td>
+                            <td class="text-center" style="width: 5%;">
+                                <strong style="vertical-align: middle;">จำนวน</strong>
+                            </td>
+                            <td class="text-center" style="width: 10%;">
+                                <?php echo $this->Form->control('qtys[].qty', ['class' => 'form-control text-center', 'type' => 'number', 'label' => false]); ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
             <?php echo $this->Form->control('shipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
             <br>
             <hr>
             <br>
-            <div class="row">
-                <div class="col-8"></div>
-                <div class="col-2 text-center">
-                    <?= $this->Form->button(__('<i class="mdi mdi-content-save-settings"></i> บันทึก'), ['class' => 'btn btn-primary btn-block m-b-5', 'escape' => false]) ?>
+            <?php if($shipmentInout->status == "DR" || $shipmentInout->status == "DX") : ?>
+                <div class="row">
+                    <div class="col-10"></div>
+                    <div class="col-2 text-center">
+                        <?= $this->Form->button(__('<i class="mdi mdi-content-save-settings"></i> บันทึก'), ['class' => 'btn btn-primary btn-block m-b-5', 'style' => 'cursor: pointer;', 'escape' => false]) ?>
+                    </div>
                 </div>
-                <div class="col-2 text-center">
-                    <?= $this->Form->button(__('<i class="mdi mdi-window-close"></i> ละทิ้ง'), ['class' => 'btn btn-danger btn-block m-b-5', 'escape' => false]) ?>
-                </div>
-            </div>
+            <?php endif; ?>
         <?= $this->Form->end() ?>
     </div>
 </div>

@@ -65,6 +65,7 @@ class ShipmentInoutsController extends AppController
     {
         $shipmentInout = $this->ShipmentInouts->newEntity();
         if ($this->request->is('post')) {
+            $this->log($this->request->getData(),'debug');
             $shipmentInout = $this->ShipmentInouts->patchEntity($shipmentInout, $this->request->getData());
             if ($this->ShipmentInouts->save($shipmentInout)) {
                 $shipment_id = $shipmentInout->id;
@@ -85,11 +86,29 @@ class ShipmentInoutsController extends AppController
     public function addShipment(){
         $postData = $this->request->getData();
         $SMinOut = TableRegistry::get('shipment_inout_lines');
-        $shipmentInoutLine = $SMinOut->newEntity();
+        
         if ($this->request->is('post')) {
-            $shipmentInoutLine = $SMinOut->patchEntity($shipmentInoutLine, $postData);
-            if($SMinOut->save($shipmentInoutLine)){
-                return $this->redirect(['action' => 'index']);
+            foreach($postData['products'] as $key => $product){
+                if(!isset($postData['SMids'][$key]['SMid'])){
+                    $shipmentInoutLine = $SMinOut->newEntity();
+                    $shipmentInoutLine->shipment_inout_id = $postData['shipment_inout_id'];
+                    $shipmentInoutLine->product_id = $product['product_id'];
+                    $shipmentInoutLine->qty = $postData['qtys'][$key]['qty'];
+                    if(!empty($postData['qtys'][$key]['qty'])){
+                        $SMinOut->save($shipmentInoutLine);
+                    }
+                }elseif(isset($postData['SMids'][$key]['SMid'])){
+                    $shipmentInoutLine = $SMinOut->get($postData['SMids'][$key]['SMid']);
+                    $shipmentInoutLine->qty = $postData['qtys'][$key]['qty'];
+                    if(!empty($postData['qtys'][$key]['qty'])){
+                        $SMinOut->save($shipmentInoutLine);
+                    }
+                }
+            }
+            $shipmentInout = $this->ShipmentInouts->get($postData['shipment_inout_id']);
+            $shipmentInout->status = 'DX';
+            if($this->ShipmentInouts->save($shipmentInout)){
+                return $this->redirect(['action' => 'edit', $postData['shipment_inout_id']]);
             }
         }
     }
@@ -125,6 +144,44 @@ class ShipmentInoutsController extends AppController
         $this->loadComponent('ProductsComp');
         $products = $this->ProductsComp->productsList();
         $this->set(compact('shipmentInout', 'products'));
+
+        $shipmentProducts = TableRegistry::get('shipment_inout_lines');
+        $SMproducts = $shipmentProducts->find()->where(['shipment_inout_id' => $id]);
+        if(isset($SMproducts)){
+            $this->set(compact('shipmentInout', 'SMproducts'));
+        }
+    }
+
+    public function addtowarehouse(){
+        $postData = $this->request->getData();
+        $id = $postData['shipment_inout_id'];
+        $warehouses = TableRegistry::get('warehouse_lines');
+        $shipmentLines = TableRegistry::get('shipment_inout_lines');
+        $shipmentInout = $this->ShipmentInouts->get($id);
+        if($this->request->is('post')){
+            $shipmentLine = $shipmentLines->find()->where(['shipment_inout_id' => $id]);
+            foreach($shipmentLine as $shipment){
+                $warehouse = $warehouses->newEntity();
+                $warehouse->product_id = $shipment->product_id;
+                $warehouse->warehouse_id = $shipmentInout->to_warehouse_id;
+                $warehouse->qty = $shipment->qty;
+                $warehouses->save($warehouse);
+            }
+            $shipmentInout->status = 'CO';
+            if($this->ShipmentInouts->save($shipmentInout)){
+                return $this->redirect(['action' => 'edit', $id]);
+            }
+        }
+    }
+
+    public function endofwarehouse(){
+        $postData = $this->request->getData();
+        $id = $postData['shipment_inout_id'];
+        $shipmentInout = $this->ShipmentInouts->get($id);
+        $shipmentInout->status = 'VO';
+            if($this->ShipmentInouts->save($shipmentInout)){
+                return $this->redirect(['action' => 'edit', $id]);
+            }
     }
 
     /**

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Warehouses Controller
@@ -40,8 +41,11 @@ class WarehousesController extends AppController
         $warehouse = $this->Warehouses->get($id, [
             'contain' => ['Orgs']
         ]);
-
         $this->set('warehouse', $warehouse);
+
+        $warehouseLines = TableRegistry::get('warehouse_lines');
+        $warehouseLine = $warehouseLines->find()->where(['warehouse_id' => $id]);
+        $this->set(compact('warehouse', 'warehouseLine'));
     }
 
     /**
