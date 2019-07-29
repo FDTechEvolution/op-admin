@@ -40,6 +40,27 @@ class ShipmentInoutsController extends AppController
         $this->set(compact('shipmentInouts', 'users'));
     }
 
+    public function shipmentIndex()
+    {
+        $this->paginate = [
+            'contain' => ['Orgs', 'FromWarehouses', 'ToWarehouses', 'Users', 'Bpartners']
+        ];
+        $shipmentInouts = $this->paginate($this->ShipmentInouts);
+        $this->set(compact('shipmentInouts'));
+
+        $this->loadComponent('WarehousesComp');
+        $warehouses = $this->WarehousesComp->WHList();
+        $this->set(compact('shipmentInouts', 'warehouses'));
+
+        $this->loadComponent('BpartnersComp');
+        $bpartners = $this->BpartnersComp->bpartnerList();
+        $this->set(compact('shipmentInouts', 'bpartners'));
+
+        $this->loadComponent('UsersComp');
+        $users = $this->UsersComp->UsersList();
+        $this->set(compact('shipmentInouts', 'users'));
+    }
+
     /**
      * View method
      *
@@ -65,7 +86,7 @@ class ShipmentInoutsController extends AppController
     {
         $shipmentInout = $this->ShipmentInouts->newEntity();
         if ($this->request->is('post')) {
-            $this->log($this->request->getData(),'debug');
+            //$this->log($this->request->getData(),'debug');
             $shipmentInout = $this->ShipmentInouts->patchEntity($shipmentInout, $this->request->getData());
             if ($this->ShipmentInouts->save($shipmentInout)) {
                 $shipment_id = $shipmentInout->id;
@@ -180,6 +201,7 @@ class ShipmentInoutsController extends AppController
         $shipmentInout = $this->ShipmentInouts->get($id);
         $shipmentInout->status = 'VO';
             if($this->ShipmentInouts->save($shipmentInout)){
+                $SMLines = TableRegistry::get('shipment_inout_lines');
                 return $this->redirect(['action' => 'edit', $id]);
             }
     }

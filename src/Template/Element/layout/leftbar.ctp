@@ -40,7 +40,7 @@
                             <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li>
-                                <?= $this->Html->link('- Goods Shipment </span>', ['controller' => 'warehouses'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                                <?= $this->Html->link('- Goods Shipment </span>', ['controller' => 'shipmentInouts', 'action' => 'shipmentIndex'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                             <li>
                                 <?= $this->Html->link('- Goods Recieve </span>', ['controller' => 'shipmentInouts'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>

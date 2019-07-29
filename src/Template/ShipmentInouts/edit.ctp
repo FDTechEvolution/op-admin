@@ -7,8 +7,14 @@
 <div class="productCategories view large-9 medium-8 columns content">
     <div class="card-box">
         <div class="row" style="display: -webkit-box;">
-            <h3>เพิ่มรายการรับสินค้าเข้าสู่คลังสินค้า</h3>
-            <?= $this->Html->link(__('<i class="ti-arrow-circle-left"></i> รายการรับสินค้าทั้งหมด'), ['action' => 'index'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'style'=>'margin-left: 20px;', 'escape' => false]) ?>
+        <?php if($shipmentInout->isshipment == 'N') :
+        ?><h3>เพิ่มรายการรับสินค้าเข้าสู่คลังสินค้า</h3>
+        <?= $this->Html->link(__('<i class="ti-arrow-circle-left"></i> รายการรับสินค้าทั้งหมด'), ['action' => 'index'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'style'=>'margin-left: 20px;', 'escape' => false]) ?>
+        <?php elseif($shipmentInout->isshipment == 'Y') :
+        ?><h3>เพิ่มรายการส่งออกสินค้าจากคลังสินค้า</h3>
+        <?= $this->Html->link(__('<i class="ti-arrow-circle-left"></i> รายการรับสินค้าทั้งหมด'), ['action' => 'shipment_index'], ['class' => 'btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5', 'style'=>'margin-left: 20px;', 'escape' => false]) ?>
+        <?php endif; ?>
+            
         </div>
         <hr>
         <div class="row">
@@ -80,11 +86,19 @@
                         <div class="col-12 text-center" style="padding-bottom: 0.3em;"><strong>การจัดการคลังสินค้า</strong></div>
                         <div class="col-6 text-center">
                             <?= $this->Form->create('shipmentConfirm' , ['url' => ['controller' => 'shipmentInouts', 'action' => 'addtowarehouse'], 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                            <?php if($shipmentInout->isshipment == 'N') : ?>
                                 <?php if(h($shipmentInout->status) == "DR") : ?>
                                     <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> นำเข้าสินค้า'), ['class' => 'btn btn-secondary btn-block disabled m-b-5', 'type' => 'button', 'escape' => false]) ?>
                                 <?php elseif(h($shipmentInout->status) == "DX") : ?>
                                     <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> นำเข้าสินค้า'), ['class' => 'btn btn-primary btn-block m-b-5', 'style' => 'cursor: pointer;', 'escape' => false]) ?>
                                 <?php endif; ?>
+                            <?php elseif($shipmentInout->isshipment == 'Y') : ?>
+                                <?php if(h($shipmentInout->status) == "DR") : ?>
+                                    <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> ส่งออกสินค้า'), ['class' => 'btn btn-secondary btn-block disabled m-b-5', 'type' => 'button', 'escape' => false]) ?>
+                                <?php elseif(h($shipmentInout->status) == "DX") : ?>
+                                    <?= $this->Form->button(__('<i class="mdi mdi-briefcase-download"></i> ส่งออกสินค้า'), ['class' => 'btn btn-primary btn-block m-b-5', 'style' => 'cursor: pointer;', 'escape' => false]) ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
                                 <?php echo $this->Form->control('shipment_inout_id', ['type' => 'hidden', 'value' => $shipmentInout->id]); ?>
                             <?= $this->Form->end() ?>
                         </div>

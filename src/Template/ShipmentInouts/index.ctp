@@ -32,7 +32,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($shipmentInouts as $shipmentInout): ?>
+                    <?php foreach ($shipmentInouts as $shipmentInout): 
+                    if($shipmentInout->isshipment == 'N') : ?>
                     <tr>
                         <td><?= $shipmentInout->has('FromWarehouses') ? $this->Html->link($shipmentInout->FromWarehouses->name, ['controller' => 'Warehouses', 'action' => 'view', $shipmentInout->FromWarehouses->id]) : '' ?></td>
                         <td><?= $shipmentInout->has('ToWarehouses') ? $this->Html->link($shipmentInout->ToWarehouses->name, ['controller' => 'Warehouses', 'action' => 'view', $shipmentInout->ToWarehouses->id]) : '' ?></td>
@@ -55,10 +56,11 @@
                                 <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'edit', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                                 <?= $this->Form->postLink(__('<i class="mdi mdi-delete-forever"></i> ลบ'), ['action' => 'delete', $shipmentInout->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shipmentInout->id), 'class' => 'btn btn-icon waves-effect waves-light btn-danger m-b-5', 'escape' => false]) ?>
                             <?php elseif(h($shipmentInout->status) == "VO") : ?>
-                                <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'view', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
+                                <?= $this->Html->link(__('<i class="mdi mdi-view-list"></i> รายละเอียด'), ['action' => 'edit', $shipmentInout->id], ['class' => 'btn btn-icon waves-effect waves-light btn-primary m-b-5', 'escape' => false]) ?>
                         <?php endif; ?>
                         </td>
                     </tr>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -82,7 +84,7 @@
                             <div class="form-group row">
                                 <label class="col-12 col-form-label">จากคลังสินค้า</label>
                                 <div class="col-12">
-                                    <?php echo $this->Form->control('form_warehouse_id', ['options' => $warehouses, 'class'=>'form-control select2', 'label'=>false]); ?>
+                                    <?php echo $this->Form->control('from_warehouse_id', ['options' => $warehouses, 'class'=>'form-control select2', 'label'=>false]); ?>
                                 </div>
                             </div>
                         </div>

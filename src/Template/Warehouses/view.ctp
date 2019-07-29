@@ -75,6 +75,7 @@
                             <th scope="col" class="text-center"><?= __('ต้นทุน (฿)') ?></th>
                             <th scope="col" class="text-center"><?= __('ราคาขาย (฿)') ?></th>
                             <th scope="col" class="text-center"><?= __('จำนวน') ?></th>
+                            <th scope="col" class="text-center"><?= __('Action') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +85,7 @@
                             <td class="text-center"><?= $productLine->has('product') ? $productLine->product->cost : '' ?></td>
                             <td class="text-center"><?= $productLine->has('product') ? $productLine->product->price : '' ?></td>
                             <td class="text-center"><?= $productLine->qty; ?></td>
+                            <td class="text-center">รับเข้า / ส่งออก</td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
