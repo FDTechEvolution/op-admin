@@ -19,22 +19,44 @@ class OrgsCompComponent extends Component {
     protected $_defaultConfig = [];
     public $Orgs = null;
     
-    public function create($org,$data){
+    public function create($orgDataArr = []){
         
         $this->Orgs = TableRegistry::get('Orgs');
+        $org = $this->Orgs->newEntity();
+        $org = $this->Orgs->patchEntity($org, $orgDataArr);
         
-        
-        //$this->log($data,'debug');
-        
-        $org = $this->Orgs->patchEntity($org, $data);
-        
-        //$org->name = $data['name'].'hello';
-        
-        
-        if($this->Orgs->save($org)){
-            return true;
+        $resultOfCheckDup = $this->checkDuplicate($orgDataArr['name'],$orgDataArr['code']);
+        if($resultOfCheckDup['result']){
+            if($this->Orgs->save($org)){
+                return ['result'=>true,'msg'=>'success'];
+            }else{
+                return ['result'=>false,'msg'=>$org->getErrors()];
+            }
         }else{
-            return false;
+            return $resultOfCheckDup;
+        }
+        
+    }
+
+    public function update($orgId = null,$orgDataArr = []){
+        $this->Orgs = TableRegistry::get('Orgs');
+        $org = $this->Orgs->find()->where(['id'=>$orgId])->first();
+
+        if(is_null($org)){
+
+        }else{
+            $resultOfCheckDup = $this->checkDuplicate($orgDataArr['name'],$orgDataArr['code'],$orgId);
+            
+            if($resultOfCheckDup['result']){
+                $org = $this->Orgs->patchEntity($org, $orgDataArr);
+                if($this->Orgs->save($org)){
+                    return ['result'=>true,'msg'=>'success'];
+                }else{
+                    return ['result'=>false,'msg'=>$org->getErrors()];
+                }
+            }else{
+                return $resultOfCheckDup;
+            }
         }
     }
 
@@ -48,8 +70,37 @@ class OrgsCompComponent extends Component {
         return $data = $query->toArray();
     }
     
-    public function update(){
-        
+    public function checkDuplicate($name = '',$code = '',$orgId = null){
+        $this->Orgs = TableRegistry::get('Orgs');
+        $msg = '';
+        $result = true;
+
+        if(is_null($orgId)){
+            $org = $this->Orgs->find()->where(['name'=>$name])->first();
+            if(!is_null($org)){
+                $msg = "Name of Organization can't be duplicate,";
+                $result = false;
+            }
+            $org = $this->Orgs->find()->where(['code'=>$code])->first();
+            if(!is_null($org)){
+                $msg .= "Code of Organization can't be duplicate.";
+                $result = false;
+            }
+
+        }else{
+            $org = $this->Orgs->find()->where(['name'=>$name,'id !='=>$orgId])->first();
+            if(!is_null($org)){
+                $msg = "Name of Organization can't be duplicate,";
+                $result = false;
+            }
+            $org = $this->Orgs->find()->where(['code'=>$code,'id !='=>$orgId])->first();
+            if(!is_null($org)){
+                $msg .= "Code of Organization can't be duplicate.";
+                $result = false;
+            }
+        }
+
+        return ['result'=>$result,'msg'=>$msg];
     }
 
 }

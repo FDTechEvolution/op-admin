@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
-
+use Cake\Event\Event;
 /**
  * Orgs Controller
  *
@@ -14,6 +14,13 @@ use Cake\ORM\TableRegistry;
  */
 class OrgsController extends AppController {
 
+
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+
+        $this->loadComponent('OrgsComp');
+    
+    }
     /**
      * Index method
      *
@@ -65,10 +72,12 @@ class OrgsController extends AppController {
         if($this->request->is(['post'])){
             $this->loadComponent('OrgsComp');
             $dataPost = $this->request->getData();
-            //$this->log($dataPost,'debug');
-            
-            if($this->OrgsComp->create($org,$dataPost)){
+
+            $saveResult = $this->OrgsComp->create($dataPost);
+            if($saveResult['result']){
                 return $this->redirect(['action'=>'index']);
+            }else{
+              $this->Flash->error(__($saveResult['msg']));  
             }
             
         }
