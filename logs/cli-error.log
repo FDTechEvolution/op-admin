@@ -63,3 +63,51 @@ Stack Trace:
 #19 {main}
 
 
+2019-08-27 12:13:35 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'admin_onlinepos.raw_order' doesn't exist in C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'raw_order', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('raw_order', Array)
+#2 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(555): Cake\Database\Schema\CachedCollection->describe('raw_order')
+#3 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(680): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#5 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'raw_order', 'RawOrder')
+#7 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('RawOrder')
+#8 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\BakeShell.php(279): Bake\Shell\Task\ModelTask->main('RawOrder')
+#9 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Collection\CollectionTrait.php(51): Bake\Shell\BakeShell->Bake\Shell\{closure}('RawOrder', 0)
+#10 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\BakeShell.php(280): Cake\Collection\Collection->each(Object(Closure))
+#11 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(518): Bake\Shell\BakeShell->all('raw_order')
+#12 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(371): Cake\Console\Shell->runCommand(Array, true)
+#13 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(166): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#14 C:\xampp\htdocs\git\onlinepos\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#15 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'admin_onlinepos.raw_order' doesn't exist in C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query('SHOW FULL COLUM...')
+#5 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(129): Cake\Database\Connection->execute('SHOW FULL COLUM...', Array)
+#8 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'raw_order', Array, Object(Cake\Database\Schema\TableSchema))
+#9 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('raw_order', Array)
+#10 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(555): Cake\Database\Schema\CachedCollection->describe('raw_order')
+#11 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\ORM\Table.php(680): Cake\ORM\Table->getSchema()
+#12 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#13 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#14 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'raw_order', 'RawOrder')
+#15 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('RawOrder')
+#16 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\BakeShell.php(279): Bake\Shell\Task\ModelTask->main('RawOrder')
+#17 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Collection\CollectionTrait.php(51): Bake\Shell\BakeShell->Bake\Shell\{closure}('RawOrder', 0)
+#18 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\bake\src\Shell\BakeShell.php(280): Cake\Collection\Collection->each(Object(Closure))
+#19 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\Shell.php(518): Bake\Shell\BakeShell->all('raw_order')
+#20 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(371): Cake\Console\Shell->runCommand(Array, true)
+#21 C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Console\CommandRunner.php(166): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#22 C:\xampp\htdocs\git\onlinepos\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#23 {main}
+
+

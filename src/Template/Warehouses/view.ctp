@@ -71,7 +71,8 @@
                 <table cellpadding="0" cellspacing="0" id="datatable-buttons" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col"><?= __('ชื่อสินค้า') ?></th>
+                            <th scope="col" class="text-center"><?=__('วันที่') ?></th>
+                            <th scope="col" class="text-center"><?= __('ชื่อสินค้า') ?></th>
                             <th scope="col" class="text-center"><?= __('ต้นทุน (฿)') ?></th>
                             <th scope="col" class="text-center"><?= __('ราคาขาย (฿)') ?></th>
                             <th scope="col" class="text-center"><?= __('จำนวน') ?></th>
@@ -79,8 +80,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($warehouseLine as $productLine): ?>
+                        <?php foreach ($warehouseLine as $productLine) : ?>
                         <tr>
+                            <td class="text-center"><?= $productLine->docdate; ?></td>
                             <td class="text-center"><?= $productLine->has('product') ? $this->Html->link($productLine->product->name, ['controller' => 'Products', 'action' => 'view', $productLine->product->id]) : '' ?></td>
                             <td class="text-center"><?= $productLine->has('product') ? $productLine->product->cost : '' ?></td>
                             <td class="text-center"><?= $productLine->has('product') ? $productLine->product->price : '' ?></td>

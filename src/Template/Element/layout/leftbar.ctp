@@ -21,6 +21,18 @@
                         <?= $this->Html->link('<i class="ti-user"></i><span> User </span>', ['controller' => 'users'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                     </li>
                     <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="mdi mdi-basket"></i> <span style="font-size: 14px;"> Sales </span>
+                            <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <?= $this->Html->link('- Raw Orders </span>', ['controller' => 'rawOrders'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                            <li>
+                                <?= $this->Html->link('- Orders </span>', ['controller' => 'productCategories'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-product-hunt"></i> <span style="font-size: 14px;"> Product Management </span>
                             <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">

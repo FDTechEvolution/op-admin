@@ -44,12 +44,14 @@ class WarehousesController extends AppController
         $this->set('warehouse', $warehouse);
 
         $warehouseLines = TableRegistry::get('warehouse_lines');
-        $warehouseLine = $warehouseLines->find()->where(['warehouse_id' => $id])->toArray();
-        $this->set(compact('warehouse', 'warehouseLine'));
+        $warehouseLine = $warehouseLines->find()
+            ->contain(['Products'])
+            ->where(['warehouse_id' => $id])->toArray();
+        $this->set(compact('warehouseLine'));
 
         $shipmentStats = TableRegistry::get('shipment_inouts');
         $shipmentStat = $shipmentStats->find()->where(['to_warehouse_id' => $id])->toArray();
-        $this->set(compact('warehouse', 'shipmentStat'));
+        $this->set(compact('shipmentStat'));
     }
 
     /**
