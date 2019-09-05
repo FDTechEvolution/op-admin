@@ -29,4 +29,18 @@ class ProductsCompComponent extends Component
         ])->where(['org_id' => $ORG_ID]);
         return $data = $query->toArray();
     }
+
+    public function productsListAll(){
+        $ORG_ID = $this->request->getSession()->read('Core.golbal.org_id');
+
+        $this->Product = TableRegistry::get('Products');
+        $query = $this->Product->find()
+        ->select([
+            'Products.id',
+            'Products.name',
+            'Products.price'
+        ])
+        ->where(['org_id' => $ORG_ID]);
+        return $data = $query->toArray();
+    }
 }

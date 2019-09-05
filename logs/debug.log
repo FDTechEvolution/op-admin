@@ -1,197 +1,19 @@
-2019-07-12 17:41:36 Debug: Array
-(
-    [form_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [to_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [bpartner_id] => 5d7b4159-3530-45b7-8eab-cf698a5eaa4e
-    [user_id] => 859d3944-0375-4bfd-abe6-6740bd45b7ee
-    [description] => 
-    [org_id] => 14608e91-6fec-4cf8-a326-eceac0afadd0
-    [status] => DR
-    [isshipment] => N
-)
-
-2019-07-12 17:42:34 Debug: Array
-(
-    [form_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [to_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [docdate] => 2019-07-12
-    [bpartner_id] => 5d7b4159-3530-45b7-8eab-cf698a5eaa4e
-    [user_id] => 859d3944-0375-4bfd-abe6-6740bd45b7ee
-    [description] => 
-    [org_id] => 14608e91-6fec-4cf8-a326-eceac0afadd0
-    [status] => DR
-    [isshipment] => N
-)
-
-2019-07-12 19:19:42 Notice: Notice (8): Undefined variable: warehouseLine in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 81]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
+2019-09-04 19:20:57 Debug: SELECT Order_lines.id AS `Order_lines__id`, Order_lines.org_id AS `Order_lines__org_id`, Order_lines.order_id AS `Order_lines__order_id`, Order_lines.product_id AS `Order_lines__product_id`, Order_lines.qty AS `Order_lines__qty`, Order_lines.price AS `Order_lines__price`, Order_lines.amount AS `Order_lines__amount`, Order_lines.description AS `Order_lines__description`, Order_lines.discount AS `Order_lines__discount`, Order_lines.created AS `Order_lines__created`, Order_lines.modified AS `Order_lines__modified` FROM order_lines Order_lines WHERE order_id = :c0
+2019-09-04 19:21:13 Debug: SELECT Order_lines.id AS `Order_lines__id`, Order_lines.org_id AS `Order_lines__org_id`, Order_lines.order_id AS `Order_lines__order_id`, Order_lines.product_id AS `Order_lines__product_id`, Order_lines.qty AS `Order_lines__qty`, Order_lines.price AS `Order_lines__price`, Order_lines.amount AS `Order_lines__amount`, Order_lines.description AS `Order_lines__description`, Order_lines.discount AS `Order_lines__discount`, Order_lines.created AS `Order_lines__created`, Order_lines.modified AS `Order_lines__modified` FROM order_lines Order_lines WHERE order_id = :c0
+2019-09-05 11:58:40 Debug: 6952326b-2b13-404a-8e8c-194a2b18a8a9
+2019-09-05 11:59:19 Debug: 1
+2019-09-05 12:00:48 Debug: 1
+2019-09-05 12:01:20 Debug: 1
+2019-09-05 12:04:06 Debug: 1
+2019-09-05 12:04:48 Debug: 1
+2019-09-05 12:04:56 Debug: 1
+2019-09-05 12:05:21 Debug: 0
+2019-09-05 13:30:35 Notice: Notice (8): Undefined variable: order in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 130]
+Request URL: /orders/add-tracking
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 81
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-07-12 19:24:28 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 85]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 85
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-07-12 19:24:28 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 85]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 85
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-07-12 19:24:28 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 85]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 85
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-07-12 19:24:28 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 85]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 85
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-07-15 13:17:42 Debug: Array
-(
-    [form_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [to_warehouse_id] => fa593ded-4936-4f24-825f-5c6f37c5ad34
-    [docdate] => 2019-07-15
-    [bpartner_id] => 5d7b4159-3530-45b7-8eab-cf698a5eaa4e
-    [user_id] => 859d3944-0375-4bfd-abe6-6740bd45b7ee
-    [description] => 
-    [org_id] => 14608e91-6fec-4cf8-a326-eceac0afadd0
-    [status] => DR
-    [isshipment] => N
-)
-
-2019-07-17 13:15:29 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Controller\WarehousesController.php, line 51]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-App\Controller\WarehousesController::view() - APP/Controller\WarehousesController.php, line 51
+App\Controller\OrdersController::addTracking() - APP/Controller\OrdersController.php, line 130
 Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
 Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
@@ -213,12 +35,240 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 11:39:22 Notice: Notice (1024): Undefined property: ReciveInoutsController::$ShipmentInouts in C:\xampp\htdocs\git\onlinepos\src\Controller\ReciveInoutsController.php on line 29 in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Controller\Controller.php, line 388]
-Request URL: /recive-inouts
+2019-09-05 16:08:49 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-Cake\Controller\Controller::__get() - CORE\src\Controller\Controller.php, line 388
-App\Controller\ReciveInoutsController::index() - APP/Controller\ReciveInoutsController.php, line 29
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:08:49 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:09:24 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:09:24 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:10:10 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:10:10 Notice: Notice (8): Array to string conversion in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 311]
+Request URL: /orders
+Referer URL: http://localhost/git/onlinepos/orders/edit/65af9597-829c-4572-9a4b-619dc02973c9
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+implode - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 311
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 291
+Cake\View\Widget\BasicWidget::render() - CORE\src\View\Widget\BasicWidget.php, line 79
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2887
+Cake\View\Helper\FormHelper::__call() - CORE\src\View\Helper\FormHelper.php, line 1750
+Cake\View\Helper\FormHelper::_getInput() - CORE\src\View\Helper\FormHelper.php, line 1335
+Cake\View\Helper\FormHelper::control() - CORE\src\View\Helper\FormHelper.php, line 1213
+include - APP/Template\Orders\index.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
+Cake\View\View::_render() - CORE\src\View\View.php, line 1374
+Cake\View\View::render() - CORE\src\View\View.php, line 880
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 2 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
 Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
 Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
@@ -240,12 +290,12 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 11:45:02 Notice: Notice (1024): Undefined property: ReciveInoutsController::$reciveInouts in C:\xampp\htdocs\git\onlinepos\src\Controller\ReciveInoutsController.php on line 29 in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Controller\Controller.php, line 388]
-Request URL: /recive-inouts
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 3 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-Cake\Controller\Controller::__get() - CORE\src\Controller\Controller.php, line 388
-App\Controller\ReciveInoutsController::index() - APP/Controller\ReciveInoutsController.php, line 29
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
 Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
 Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
@@ -267,12 +317,12 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 11:45:14 Notice: Notice (1024): Undefined property: ReciveInoutsController::$reciveInout in C:\xampp\htdocs\git\onlinepos\src\Controller\ReciveInoutsController.php on line 29 in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Controller\Controller.php, line 388]
-Request URL: /recive-inouts
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 4 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-Cake\Controller\Controller::__get() - CORE\src\Controller\Controller.php, line 388
-App\Controller\ReciveInoutsController::index() - APP/Controller\ReciveInoutsController.php, line 29
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
 Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
 Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
@@ -294,12 +344,12 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 12:29:23 Notice: Notice (1024): Undefined property: ReciveInoutsController::$reciveInout in C:\xampp\htdocs\git\onlinepos\src\Controller\ReciveInoutsController.php on line 29 in [C:\xampp\htdocs\git\onlinepos\vendor\cakephp\cakephp\src\Controller\Controller.php, line 388]
-Request URL: /recive-inouts
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 5 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-Cake\Controller\Controller::__get() - CORE\src\Controller\Controller.php, line 388
-App\Controller\ReciveInoutsController::index() - APP/Controller\ReciveInoutsController.php, line 29
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
 Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
 Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
@@ -321,17 +371,14 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 16:29:45 Notice: Notice (8): Undefined variable: warehouseLine in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 83]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 6 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 83
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
 Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
 Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
@@ -351,347 +398,14 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
 
 
 
-2019-08-13 16:30:16 Notice: Notice (8): Undefined property: Cake\ORM\Query::$name in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 15]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
+2019-09-05 16:35:38 Notice: Notice (8): Uninitialized string offset: 7 in [C:\xampp\htdocs\git\onlinepos\src\Controller\OrdersController.php, line 227]
+Request URL: /orders/order-change-status-array
+Referer URL: http://localhost/git/onlinepos/orders
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 15
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-13 16:34:31 Notice: Notice (8): Undefined property: Cake\ORM\Query::$docdate in [C:\xampp\htdocs\git\onlinepos\src\Template\Warehouses\view.ctp, line 85]
-Request URL: /warehouses/view/fa593ded-4936-4f24-825f-5c6f37c5ad34
-Referer URL: http://localhost/git/onlinepos/warehouses
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\Warehouses\view.ctp, line 85
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:27 Notice: Notice (8): Undefined variable: warehouse in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:27 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:27 Notice: Notice (8): Undefined variable: rowOrders in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 28]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 28
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:56 Notice: Notice (8): Undefined variable: rowOrders in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:56 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:27:56 Notice: Notice (8): Undefined variable: rowOrders in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 28]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 28
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:28:30 Notice: Notice (8): Undefined variable: RawOrders in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:28:30 Notice: Notice (8): Trying to get property of non-object in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:28:30 Notice: Notice (8): Undefined variable: RawOrders in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 28]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 28
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
-Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
-Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke() - CORE\src\Http\Middleware\CsrfProtectionMiddleware.php, line 108
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 168
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
-Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
-Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
-Cake\Http\Server::run() - CORE\src\Http\Server.php, line 98
-[main] - ROOT\webroot\index.php, line 40
-
-
-
-2019-08-27 12:29:00 Notice: Notice (8): Undefined property: Cake\ORM\ResultSet::$name in [C:\xampp\htdocs\git\onlinepos\src\Template\RawOrders\index.ctp, line 10]
-Request URL: /raw-orders
-Referer URL: http://localhost/git/onlinepos/users
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
-include - APP/Template\RawOrders\index.ctp, line 10
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1413
-Cake\View\View::_render() - CORE\src\View\View.php, line 1374
-Cake\View\View::render() - CORE\src\View\View.php, line 880
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 791
-Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 126
+App\Controller\OrdersController::orderChangeStatusArray() - APP/Controller\OrdersController.php, line 227
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 610
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 120
 Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
 Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 235
 Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65

@@ -28,7 +28,7 @@
                                 <?= $this->Html->link('- Raw Orders </span>', ['controller' => 'rawOrders'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                             <li>
-                                <?= $this->Html->link('- Orders </span>', ['controller' => 'productCategories'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
+                                <?= $this->Html->link('- Orders </span>', ['controller' => 'orders'], ['class' => 'waves-effect waves-primary', 'escape' => false]) ?>
                             </li>
                         </ul>
                     </li>

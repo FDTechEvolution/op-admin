@@ -201,3 +201,7 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+define('DATE_TIME_FORMATE', 'dd/MM/yyyy HH:mm');
+define('DATE_FORMATE', 'dd/MM/yyyy');
+define('TH_DATE', 'en-IR@calendar=buddhist');

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Edit Organization</h4>
+            <h4 class="page-title">Edit Customer</h4>
             <div class="clearfix"></div>
         </div>
     </div>
